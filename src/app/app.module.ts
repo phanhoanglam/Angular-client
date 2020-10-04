@@ -1,4 +1,5 @@
 import { SharedModule } from './shared/share-module/shared-module.module';
+import { LayoutModule } from '@layouts/layout.module';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +15,8 @@ import { AdminComponent } from './modules/admin/admin.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutModule
   ],
   exports: [
     SharedModule
