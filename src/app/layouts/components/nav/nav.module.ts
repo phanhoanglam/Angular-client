@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     NavComponent
   ],
-  imports: [],
+  imports: [
+    RouterModule
+  ],
   exports: [
     NavComponent
   ]
