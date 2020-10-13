@@ -26,8 +26,21 @@
       <!-- Right Side Content / End -->
       <div class="right-side">
 
+        <div *ngIf="!currentUser" class="header-widget">
+					<a (click)="showPopupLoginRegister()" href="#"  class="popup-with-zoom-anim log-in-button"><i class="icon-feather-log-in"></i> <span>Log In / Register</span></a>
+				</div>
+
+				<!-- Mobile Navigation Button -->
+				<span *ngIf="!currentUser" class="mmenu-trigger">
+					<button class="hamburger hamburger--collapse" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</span>
+
         <!--  User Notifications -->
-        <div class="header-widget hide-on-mobile">
+        <div *ngIf="currentUser" class="header-widget hide-on-mobile">
 
           <!-- Notifications -->
           <div class="header-notifications">
@@ -173,7 +186,7 @@
         <!--  User Notifications / End -->
 
         <!-- User Menu -->
-        <div class="header-widget">
+        <div *ngIf="currentUser" class="header-widget">
 
           <!-- Messages -->
           <div class="header-notifications user-menu">
@@ -221,7 +234,7 @@
         <!-- User Menu / End -->
 
         <!-- Mobile Navigation Button -->
-        <span class="mmenu-trigger">
+        <span *ngIf="currentUser" class="mmenu-trigger">
           <button class="hamburger hamburger--collapse" type="button">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
@@ -239,3 +252,5 @@
 </header>
 <div class="clearfix"></div>
 <!-- Header Container / End -->
+
+

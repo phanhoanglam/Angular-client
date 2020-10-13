@@ -1,0 +1,63 @@
+.login:hover {
+    color: red;
+}
+
+.close {
+    display         : flex;
+    align-items     : center;
+    cursor          : pointer;
+    background-color: #e4e4e4;
+    padding         : 0px 20px;
+}
+
+.welcome-text h3 {
+    display    : block;
+    font-weight: 700;
+    color      : #333;
+    font-size  : 24px;
+}
+
+.welcome-text span {
+    display   : block;
+    margin-top: 4px;
+}
+
+.popup-tabs-nav li.active a {
+    color      : #66676b;
+    font-weight: 600;
+}
+
+.login {
+    cursor: pointer;
+}
+
+.register {
+    cursor: pointer;
+}
+
+.btnLogin {
+    margin-top: 20px;
+}
+
+.forgot-password {
+    color: #808080;
+}
+
+.forgot-password:hover {
+    color: blue;
+}
+
+.register-tab {
+    color: blue;
+}
+
+.register-tab:hover {
+    color: #808080;
+}
+
+@media (max-width: 480px) {
+    .popup-tabs-nav {
+        padding-top: 0px !important; 
+        height: 50px;
+    }
+}
