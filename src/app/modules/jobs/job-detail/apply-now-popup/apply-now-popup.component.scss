@@ -1,0 +1,14 @@
+@media (max-width: 480px) {
+    .popup-tabs-nav {
+        padding-top: 0px !important; 
+        height: 50px;
+    }
+}
+
+.close {
+    display         : flex;
+    align-items     : center;
+    cursor          : pointer;
+    background-color: #e4e4e4;
+    padding         : 0px 20px;
+}

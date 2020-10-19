@@ -1,22 +1,31 @@
-import { AccountModule } from './modules/account/account.module';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+
+import { JobRoutes } from '@config/routes';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./modules/account/account.module').then(m => m.AccountModule),
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
-    path: 'home',
-    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    path: JobRoutes.basePath,
+    loadChildren: () => import('./modules/jobs/jobs.module').then(m => m.JobsModule)
   },
+  {
+    path: 'job-maps',
+    loadChildren: () => import('./modules/job-maps/job-maps.module').then(m => m.JobMapsModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./modules/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{
-    preloadingStrategy: PreloadAllModules
-  })],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
