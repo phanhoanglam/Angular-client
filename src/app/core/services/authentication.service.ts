@@ -21,20 +21,13 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<any>(`${environment.apiUrl}/api/employees/login`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
-    }
-
-    test(){
-        return this.http.get<any>('https://jsonplaceholder.typicode.com/todos')
-        .pipe(map(user=>{
-            return user;
-        }));
     }
 
     logout() {

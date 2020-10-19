@@ -27,23 +27,23 @@
 				</div>
 
 				<!-- Form -->
-				<form method="post" id="login-form">
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="login-form">
 					<div class="input-with-icon-left">
 						<i class="icon-material-baseline-mail-outline"></i>
-						<input type="text" class="input-text with-border" name="emailaddress" id="emailaddress"
+						<input type="text" formControlName="username" class="input-text with-border" name="emailaddress" id="emailaddress"
 							placeholder="Email Address" required />
 					</div>
 
 					<div class="input-with-icon-left">
 						<i class="icon-material-outline-lock"></i>
-						<input type="password" class="input-text with-border" name="password" id="password"
+						<input type="password" formControlName="password" class="input-text with-border" name="password" id="password"
 							placeholder="Password" required />
 					</div>
 					<a href="#" class="forgot-password">Forgot Password?</a>
 				</form>
 
 				<!-- Button -->
-				<button class="button full-width button-sliding-icon ripple-effect btnLogin" (click)="onSubmitLogin()" type="submit" form="login-form">Log
+				<button class="button full-width button-sliding-icon ripple-effect btnLogin" [disabled]="loading" type="submit" form="login-form">Log
 					In <i class="icon-material-outline-arrow-right-alt"></i></button>
 
 				<!-- Social Login -->

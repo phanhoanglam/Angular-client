@@ -4,9 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { DashboardRoutingModule } from './home-routing.module';
 
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     DashboardRoutingModule

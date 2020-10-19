@@ -8,6 +8,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '@core/helpers/jwt.interceptor';
 import { ErrorInterceptor } from '@core/helpers/error.interceptor';
 import { LoginRegisterPopupComponent } from './modules/popup/login-register-popup/login-register-popup.component';
+import { JobMapsComponent } from './modules/job-maps/job-maps/job-maps.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { LoginRegisterPopupComponent } from './modules/popup/login-register-popu
   imports: [
     AppRoutingModule,
     LayoutModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule
   ],
   exports: [
