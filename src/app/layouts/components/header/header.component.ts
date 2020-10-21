@@ -23,8 +23,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showPopupLoginRegister() {
-    const dialogRef = this.dialog.open(LoginRegisterPopupComponent, { panelClass: 'custom-dialog-container' },);
+  showPopupLoginRegister(): void {
+    const dialogRef = this.dialog.open(
+      LoginRegisterPopupComponent,
+      { panelClass: 'custom-dialog-container' }
+    );
 
     // dialogRef.afterClosed().subscribe(result => {
     //   console.log(`Dialog result: ${result}`);

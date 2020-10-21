@@ -1,9 +1,9 @@
-import { AuthenticationService } from '@core/services/authentication.service';
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import {AuthenticationService} from '@core/services/authentication.service';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-register-popup',
@@ -29,7 +29,9 @@ export class LoginRegisterPopupComponent implements OnInit {
     }
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -40,21 +42,21 @@ export class LoginRegisterPopupComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.invalid) {
-        return;
+      return;
     }
 
     this.loading = true;
     this._authenticationService.login(this.f.username.value, this.f.password.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-                this.router.navigate([this.returnUrl]);
-            },
-            error => {
-                this.loading = false;
-            });
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.loading = false;
+        });
   }
 
   close(result: any): void {
