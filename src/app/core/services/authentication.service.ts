@@ -20,7 +20,7 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
+    loginEmployee(username: string, password: string): Observable<User> {
         return this.http.post<any>(`${environment.apiUrl}/api/employees/login`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -30,7 +30,17 @@ export class AuthenticationService {
             }));
     }
 
-    logout() {
+    loginEmployer(username: string, password: string): Observable<User> {
+        return this.http.post<any>(`${environment.apiUrl}/api/employer/login`, { username, password })
+            .pipe(map(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.currentUserSubject.next(user);
+                return user;
+            }));
+    }
+
+    logout(): void {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
