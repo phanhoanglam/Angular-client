@@ -1,6 +1,6 @@
 <div class="full-page-container with-map">
 
-	<div class="full-page-sidebar">
+	<div *ngIf="isFilter" class="full-page-sidebar">
 		<div class="full-page-sidebar-inner">
 
 			<div class="sidebar-container">
@@ -9,18 +9,22 @@
 					<h3>Keywords</h3>
 					<div class="keywords-container">
 						<div class="keyword-input-container">
-							<input type="text" class="keyword-input" placeholder="e.g. job title"/>
-							<button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
+							<input type="text" class="keyword-input" placeholder="e.g. job title" />
+							<button class="keyword-input-button ripple-effect"><i
+									class="icon-material-outline-add"></i></button>
 						</div>
-						<div class="keywords-list"><!-- keywords go here --></div>
+						<div class="keywords-list">
+							<!-- keywords go here -->
+						</div>
 						<div class="clearfix"></div>
 					</div>
 				</div>
-				
+
 				<!-- Category -->
 				<div class="sidebar-widget">
 					<h3>Category</h3>
-					<select class="selectpicker default" multiple data-selected-text-format="count" data-size="7" title="All Categories" >
+					<select class="selectpicker default" multiple data-selected-text-format="count" data-size="7"
+						title="All Categories">
 						<option>Admin Support</option>
 						<option>Customer Service</option>
 						<option>Data Analytics</option>
@@ -33,29 +37,34 @@
 						<option>Sales & Marketing</option>
 					</select>
 				</div>
-				
+
 				<!-- Job Types -->
 				<div class="sidebar-widget">
 					<h3>Job Type</h3>
 
 					<div class="switches-list">
 						<div class="switch-container">
-							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Freelance</label>
+							<label class="switch"><input type="checkbox"><span class="switch-button"></span>
+								Freelance</label>
 						</div>
 
 						<div class="switch-container">
-							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Full Time</label>
+							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Full
+								Time</label>
 						</div>
 
 						<div class="switch-container">
-							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Part Time</label>
+							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Part
+								Time</label>
 						</div>
 
 						<div class="switch-container">
-							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Internship</label>
+							<label class="switch"><input type="checkbox"><span class="switch-button"></span>
+								Internship</label>
 						</div>
 						<div class="switch-container">
-							<label class="switch"><input type="checkbox"><span class="switch-button"></span> Temporary</label>
+							<label class="switch"><input type="checkbox"><span class="switch-button"></span>
+								Temporary</label>
 						</div>
 					</div>
 
@@ -67,7 +76,8 @@
 					<div class="margin-top-55"></div>
 
 					<!-- Range Slider -->
-					<input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]"/>
+					<input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500"
+						data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" />
 				</div>
 
 				<!-- Tags -->
@@ -76,31 +86,31 @@
 
 					<div class="tags-container">
 						<div class="tag">
-							<input type="checkbox" id="tag1"/>
+							<input type="checkbox" id="tag1" />
 							<label for="tag1">front-end dev</label>
 						</div>
 						<div class="tag">
-							<input type="checkbox" id="tag2"/>
+							<input type="checkbox" id="tag2" />
 							<label for="tag2">angular</label>
 						</div>
 						<div class="tag">
-							<input type="checkbox" id="tag3"/>
+							<input type="checkbox" id="tag3" />
 							<label for="tag3">react</label>
 						</div>
 						<div class="tag">
-							<input type="checkbox" id="tag4"/>
+							<input type="checkbox" id="tag4" />
 							<label for="tag4">vue js</label>
 						</div>
 						<div class="tag">
-							<input type="checkbox" id="tag5"/>
+							<input type="checkbox" id="tag5" />
 							<label for="tag5">web apps</label>
 						</div>
 						<div class="tag">
-							<input type="checkbox" id="tag6"/>
+							<input type="checkbox" id="tag6" />
 							<label for="tag6">design</label>
 						</div>
 						<div class="tag">
-							<input type="checkbox" id="tag7"/>
+							<input type="checkbox" id="tag7" />
 							<label for="tag7">wordpress</label>
 						</div>
 					</div>
@@ -119,7 +129,7 @@
 		</div>
 	</div>
 	<!-- Full Page Sidebar / End -->
-	
+
 
 	<!-- Full Page Content -->
 	<div class="full-page-content-container" data-simplebar>
@@ -129,7 +139,8 @@
 
 			<div class="notify-box margin-top-15">
 				<div class="switch-container">
-					<label class="switch"><input type="checkbox"><span class="switch-button"></span><span class="switch-text">Turn on email alerts for this search</span></label>
+					<label class="switch"><input type="checkbox"><span class="switch-button"></span><span
+							class="switch-text">Turn on email alerts for this search</span></label>
 				</div>
 
 				<div class="sort-by">
@@ -144,7 +155,7 @@
 			</div>
 
 			<div class="listings-container grid-layout margin-top-35">
-				
+
 				<!-- Job Listing -->
 				<a href="single-job-page.html" class="job-listing">
 
@@ -157,7 +168,8 @@
 
 						<!-- Details -->
 						<div class="job-listing-description">
-							<h4 class="job-listing-company">Hexagon <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+							<h4 class="job-listing-company">Hexagon <span class="verified-badge"
+									title="Verified Employer" data-tippy-placement="top"></span></h4>
 							<h3 class="job-listing-title">Bilingual Event Support Specialist</h3>
 						</div>
 					</div>
@@ -172,7 +184,7 @@
 							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
 						</ul>
 					</div>
-				</a>	
+				</a>
 
 				<!-- Job Listing -->
 				<a href="single-job-page.html" class="job-listing">
@@ -231,7 +243,7 @@
 						</ul>
 					</div>
 				</a>
-				
+
 
 				<!-- Job Listing -->
 				<a href="single-job-page.html" class="job-listing">
@@ -245,7 +257,8 @@
 
 						<!-- Details -->
 						<div class="job-listing-description">
-							<h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+							<h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer"
+									data-tippy-placement="top"></span></h4>
 							<h3 class="job-listing-title">Restaurant General Manager</h3>
 						</div>
 					</div>
@@ -378,7 +391,7 @@
 						</ul>
 					</div>
 				</a>
-				
+
 				<!-- Job Listing -->
 				<a href="single-job-page.html" class="job-listing">
 
@@ -407,7 +420,7 @@
 						</ul>
 					</div>
 				</a>
-				
+
 				<!-- Job Listing -->
 				<a href="single-job-page.html" class="job-listing">
 
@@ -436,7 +449,7 @@
 						</ul>
 					</div>
 				</a>
-				
+
 				<!-- Job Listing -->
 				<a href="single-job-page.html" class="job-listing">
 
@@ -502,12 +515,14 @@
 			<div class="pagination-container margin-top-20 margin-bottom-20">
 				<nav class="pagination">
 					<ul>
-						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
+						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i
+									class="icon-material-outline-keyboard-arrow-left"></i></a></li>
 						<li><a href="#" class="ripple-effect">1</a></li>
 						<li><a href="#" class="ripple-effect current-page">2</a></li>
 						<li><a href="#" class="ripple-effect">3</a></li>
 						<li><a href="#" class="ripple-effect">4</a></li>
-						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
+						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i
+									class="icon-material-outline-keyboard-arrow-right"></i></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -521,7 +536,7 @@
 
 	<!-- Full Page Map -->
 	<div class="full-page-map-container">
-		
+
 		<!-- Enable Filters Button -->
 		<div class="filter-button-container">
 			<button (click)="isFilter = true" class="enable-filters-button">
@@ -531,9 +546,13 @@
 			</button>
 			<div class="filter-button-tooltip">Click to expand sidebar with filters!</div>
 		</div>
-		
+
 		<!-- Map -->
-	    <div id="map" data-map-zoom="12"  data-map-scroll="true"></div>
+		<!-- <div id="map" data-map-zoom="12"  data-map-scroll="true"></div> -->
+		<agm-map id="map" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+			<agm-marker [latitude]="lat" [longitude]="lng">
+			</agm-marker>
+		</agm-map>
 	</div>
 	<!-- Full Page Map / End -->
 

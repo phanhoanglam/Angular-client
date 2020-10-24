@@ -1,6 +1,9 @@
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+
+import { AgmCoreModule } from '@agm/core';
 import { SharedModule } from './shared/share-module/shared-module.module';
 import { LayoutModule } from '@layouts/layout.module';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +14,8 @@ import { LoginRegisterPopupComponent } from './modules/popup/login-register-popu
 import { JobMapsComponent } from './modules/job-maps/job-maps/job-maps.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BrowserModule
   ],
   exports: [
     SharedModule

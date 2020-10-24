@@ -1,3 +1,4 @@
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,12 +10,19 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
+    path: JobRoutes.home, redirectTo: '', pathMatch: 'full'
+  },
+  {
     path: JobRoutes.basePath,
     loadChildren: () => import('./modules/jobs/jobs.module').then(m => m.JobsModule)
   },
   {
-    path: 'job-maps',
+    path: JobRoutes.jobmapsPath,
     loadChildren: () => import('./modules/job-maps/job-maps.module').then(m => m.JobMapsModule)
+  },
+  {
+    path: JobRoutes.dashboardPath,
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: '**',
