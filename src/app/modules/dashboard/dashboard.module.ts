@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import {DashboardComponent} from './dashboard.component';
-import {DashboardHomeComponent} from './components/dahsboard-home/dashboard-home.component';
+import { DashboardComponent } from './dashboard.component';
+import { DashboardHomeComponent } from './components/dahsboard-home/dashboard-home.component';
+import { DashboardMessagesComponent } from './components/dashboard-messages/dashboard-messages.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    DashboardHomeComponent
+    DashboardHomeComponent,
+    DashboardMessagesComponent
   ],
   imports: [
     CommonModule,

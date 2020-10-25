@@ -10,18 +10,19 @@ import { NavigationEnd, Router } from '@angular/router';
 export class DefaultLayoutComponent implements OnInit {
 
   isHide = false;
+  linkDashboard = JobRoutes.dashboardPath;
 
   constructor(
-    private router: Router,
+    public router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.router.events
-    .subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.isHide = (event.url !== '/' + JobRoutes.dashboardPath);
-      }
-    });
+    // this.router.events
+    // .subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.isHide = (event.url !== '/' + JobRoutes.dashboardPath);
+    //   }
+    // });
   }
 
 }

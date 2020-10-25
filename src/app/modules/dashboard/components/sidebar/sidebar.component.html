@@ -6,7 +6,8 @@
 
 			<!-- Responsive Navigation Trigger -->
 			<a class="dashboard-responsive-nav-trigger" (click)="showDashboardNav()">
-				<span [ngClass]="(isShowDashboardNav == true ? 'hamburger hamburger--collapse is-active' : 'hamburger hamburger--collapse')">
+				<span
+					[ngClass]="(isShowDashboardNav == true ? 'hamburger hamburger--collapse is-active' : 'hamburger hamburger--collapse')">
 					<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
 					</span>
@@ -15,18 +16,18 @@
 			</a>
 
 			<!-- Navigation -->
-			<div
-				[ngClass]="(isShowDashboardNav == true ? 'dashboard-nav active' : 'dashboard-nav')">
+			<div [ngClass]="(isShowDashboardNav == true ? 'dashboard-nav active' : 'dashboard-nav')">
 				<div class="dashboard-nav-inner">
 
 					<ul data-submenu-title="Start">
 						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-              <a
-                [routerLink]="['/dashboard']" [routerLinkActive]="['active']"
-              >
-                <i class="icon-material-outline-dashboard"></i>Dashboard
-              </a>
-            </li>
+							<a [routerLink]="['/dashboard']" [routerLinkActive]="['active']">
+								<i class="icon-material-outline-dashboard"></i>Dashboard
+							</a>
+						</li>
+						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/dashboard/message']" [routerLinkActive]="['active']"><i
+									class="icon-material-outline-question-answer"></i>Messages<span
+									class="nav-tag">2</span></a></li>
 					</ul>
 				</div>
 			</div>

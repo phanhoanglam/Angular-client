@@ -1,5 +1,5 @@
 <div id="main">
   <app-header></app-header>
   <app-content></app-content>
-  <app-footer *ngIf="isHide"></app-footer>
+  <app-footer *ngIf="!router.url.includes(linkDashboard)"></app-footer>
 </div>
