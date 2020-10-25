@@ -9834,6 +9834,7 @@ transform: translateY(-18px);
 }
 
 .simplebar-scroll-content {
+	padding-right: 90px !important;
     overflow-x: hidden!important;
     overflow-y: scroll;
     min-width: 100%!important;

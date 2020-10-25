@@ -1,4 +1,4 @@
-import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { DashboardLayoutModule } from './modules/dashboard/dashboard-layout.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: JobRoutes.dashboardPath,
-    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./modules/dashboard/dashboard-layout.module').then(m => m.DashboardLayoutModule)
   },
   {
     path: '**',

@@ -1,11 +1,9 @@
-import { DashboardComponent } from './dashboard.component';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 @NgModule({

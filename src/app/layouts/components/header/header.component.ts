@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     public dialog: MatDialog,
     private _authenticationService: AuthenticationService
   ) {
-    this._authenticationService.currentUser.subscribe(x=> this.currentUser = x)
+    this._authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {

@@ -20,8 +20,8 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    loginEmployee(username: string, password: string): Observable<User> {
-        return this.http.post<any>(`${environment.apiUrl}/api/employees/login`, { username, password })
+    loginEmployee(email: string, password: string): Observable<User> {
+        return this.http.post<any>(`${environment.apiUrl}/api/employees/login`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -30,8 +30,8 @@ export class AuthenticationService {
             }));
     }
 
-    loginEmployer(username: string, password: string): Observable<User> {
-        return this.http.post<any>(`${environment.apiUrl}/api/employer/login`, { username, password })
+    loginEmployer(email: string, password: string): Observable<User> {
+        return this.http.post<any>(`${environment.apiUrl}/api/employer/login`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
