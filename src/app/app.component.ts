@@ -2,25 +2,25 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-
-declare var initApp: any;
+import * as abcJS from '../assets/js/custom.js';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'Angular-client';
 
   constructor(
     private titleService: Title,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit(): void {
-
     const appTitle = this.titleService.getTitle();
     this.router
       .events.pipe(
@@ -40,9 +40,4 @@ export class AppComponent implements OnInit, AfterViewInit {
       });
 
   }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => initApp());
-  }
-
 }

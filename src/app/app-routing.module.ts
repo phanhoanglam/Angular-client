@@ -2,7 +2,8 @@ import { DashboardLayoutModule } from './modules/dashboard/dashboard-layout.modu
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { JobRoutes } from '@config/routes';
+
+import {JobRoutes} from '@config/routes';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/jobs/jobs.module').then(m => m.JobsModule)
   },
   {
-    path: JobRoutes.jobmapsPath,
+    path: JobRoutes.jobMapsPath,
     loadChildren: () => import('./modules/job-maps/job-maps.module').then(m => m.JobMapsModule)
   },
   {
