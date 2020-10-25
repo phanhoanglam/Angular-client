@@ -1,14 +1,16 @@
-import { SidebarModule } from './sidebar/sidebar.module';
+import { SidebarModule } from './components/sidebar/sidebar.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import {DashboardComponent} from './dashboard.component';
+import {DashboardHomeComponent} from './components/dahsboard-home/dashboard-home.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    DashboardHomeComponent
   ],
   imports: [
     CommonModule,
@@ -16,8 +18,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     RouterModule,
     DashboardRoutingModule
   ],
-  exports: [
-    DashboardComponent
-  ]
+  exports: []
 })
 export class DashboardModule { }
