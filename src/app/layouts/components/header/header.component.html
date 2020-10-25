@@ -186,10 +186,10 @@
         <!--  User Notifications / End -->
 
         <!-- User Menu -->
-        <div *ngIf="currentUser" class="header-widget">
+        <div class="header-widget">
 
           <!-- Messages -->
-          <div class="header-notifications user-menu">
+          <div *ngIf="currentUser" class="header-notifications user-menu">
             <div class="header-notifications-trigger">
               <a href="#">
                 <div class="user-avatar status-online"><img src="images/user-avatar-small-01.jpg" alt=""></div>

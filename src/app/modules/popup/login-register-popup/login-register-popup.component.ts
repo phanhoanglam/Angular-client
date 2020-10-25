@@ -34,7 +34,7 @@ export class LoginRegisterPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
@@ -57,7 +57,7 @@ export class LoginRegisterPopupComponent implements OnInit {
 
     this.loading = true;
     if (this.isEmployee) {
-      this._authenticationService.loginEmployee(this.f.username.value, this.f.password.value)
+      this._authenticationService.loginEmployee(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           data => {
@@ -67,7 +67,7 @@ export class LoginRegisterPopupComponent implements OnInit {
             this.loading = false;
           });
     } else {
-      this._authenticationService.loginEmployer(this.f.username.value, this.f.password.value)
+      this._authenticationService.loginEmployer(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           data => {

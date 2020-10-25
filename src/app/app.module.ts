@@ -1,5 +1,3 @@
-import { DashboardModule } from './modules/dashboard/dashboard.module';
-
 import { AgmCoreModule } from '@agm/core';
 import { SharedModule } from './shared/share-module/shared-module.module';
 import { LayoutModule } from '@layouts/layout.module';
@@ -15,7 +13,6 @@ import { JobMapsComponent } from './modules/job-maps/job-maps/job-maps.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
