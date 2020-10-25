@@ -27,7 +27,7 @@
       <div class="right-side">
 
         <div *ngIf="!currentUser" class="header-widget">
-					<a (click)="showPopupLoginRegister()" href="#"  class="popup-with-zoom-anim log-in-button"><i class="icon-feather-log-in"></i> <span>Log In / Register</span></a>
+					<a (click)="showPopupLoginRegister()" href="javascript:void(0)"  class=" log-in-button"><i class="icon-feather-log-in"></i> <span>Log In / Register</span></a>
 				</div>
 
 				<!-- Mobile Navigation Button -->
@@ -186,10 +186,10 @@
         <!--  User Notifications / End -->
 
         <!-- User Menu -->
-        <div class="header-widget">
+        <div *ngIf="currentUser" class="header-widget">
 
           <!-- Messages -->
-          <div *ngIf="currentUser" class="header-notifications user-menu">
+          <div  class="header-notifications user-menu">
             <div class="header-notifications-trigger">
               <a href="#">
                 <div class="user-avatar status-online"><img src="images/user-avatar-small-01.jpg" alt=""></div>
