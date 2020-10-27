@@ -13,8 +13,11 @@ import { RouterModule } from '@angular/router';
   imports: [
     JobMapsRoutingModule,
     RouterModule,
+    CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBYiHfMlwJdYaxFTkZQAk57bZaLPPW35TY'
+      apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
+      apiVersion: 'quarterly',
+      libraries: ['places', 'geometry']
     })
   ],
 })

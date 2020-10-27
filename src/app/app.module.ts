@@ -13,6 +13,8 @@ import { JobMapsComponent } from './modules/job-maps/job-maps/job-maps.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,15 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    BrowserModule
+    BrowserModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    AgmCoreModule.forRoot({
+      // apiKey: 'AIzaSyBYiHfMlwJdYaxFTkZQAk57bZaLPPW35TY',
+      apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
+      apiVersion: 'quarterly',
+      libraries: ['places', 'geometry']
+    })
   ],
   exports: [
     SharedModule

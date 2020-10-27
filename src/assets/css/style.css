@@ -10713,7 +10713,7 @@ img.mfp-img {
 }
 
 .popup-tab-content {
-	padding: 50px 35px;
+	padding: 35px 35px;
 	position: relative;
 	z-index: 10;
 	display: inline-block;
@@ -10921,6 +10921,16 @@ img.mfp-img {
 	display: flex;
 	width: calc(100% + 20px);
 	margin: 0 0 20px 0;
+}
+
+.form-name {
+	display: flex;
+	width: calc(100% + 20px);
+}
+
+.form-name div {
+	flex: 1;
+	margin-right: 20px;
 }
 
 .account-type div {
