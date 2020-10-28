@@ -1,18 +1,19 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationService } from '@core/services/authentication.service';
 import { Component, ElementRef, NgZone, OnInit, ViewChild, AfterViewInit, QueryList } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { MapsAPILoader } from '@agm/core';
 import { ViewChildren } from '@angular/core';
+import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'app-login-register-popup',
   templateUrl: './login-register-popup.component.html',
   styleUrls: ['./login-register-popup.component.scss']
 })
-export class LoginRegisterPopupComponent implements OnInit, AfterViewInit {
+export class LoginRegisterPopupComponent implements OnInit {
 
   isLogin = true;
   loginForm: FormGroup;
@@ -20,16 +21,7 @@ export class LoginRegisterPopupComponent implements OnInit, AfterViewInit {
   returnUrl: string;
   isEmployee = true;
 
-  latitude: number;
-  longitude: number;
-  zoom = 0;
   address: string;
-  private geoCoder;
-  @ViewChild('search') set search (searchElementRef: ElementRef|null) {
-    if (!searchElementRef) { 
-      return;
-    }
-  }
 
   constructor(
     private _authenticationService: AuthenticationService,
@@ -44,79 +36,62 @@ export class LoginRegisterPopupComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/']);
     }
 
-    
+
   }
 
   get f() { return this.loginForm.controls; }
 
   ngOnInit(): void {
-    
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+
   }
 
-  ngAfterViewInit() {
-    // load Places Autocomplete
-    console.log(this.search);
-    
-    this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder();
-      let autocomplete = new google.maps.places.Autocomplete(this.search.nativeElement);
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          // get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          // verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-          this.address = place.formatted_address;
-          // set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 18;
-          // this.getAddress(place.geometry.location.lat(), place.geometry.location.lng());
-        });
-      });
-    });
+  onAutocompleteSelected(result: PlaceResult): void {
+    console.log('log 2 > ', result);
   }
 
-  // Get Current Location Coordinates
-  private setCurrentLocation(): void {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 14;
-        this.getAddress(this.latitude, this.longitude);
-      }, () => {
-        this.address = 'Choisir une adresse';
-      });
-    } else {
-      alert('Geolocation is not supported by this browser, please use google chrome.');
-    }
+  onLocationSelected(event): void {
+    console.log('log 1 > ', event);
+
   }
 
-  getAddress(latitude, longitude): void {
-    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      if (status === 'OK') {
-        if (results[0]) {
-          this.zoom = 18;
-          this.address = results[0].formatted_address;
-        } else {
-          window.alert('No results found');
-        }
-      } else {
-        window.alert('Geocoder failed due to: ' + status);
-      }
-    });
-  }
+
+  // // Get Current Location Coordinates
+  // private setCurrentLocation(): void {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.latitude = position.coords.latitude;
+  //       this.longitude = position.coords.longitude;
+  //       this.zoom = 14;
+  //       this.getAddress(this.latitude, this.longitude);
+  //     }, () => {
+  //       this.address = 'Choisir une adresse';
+  //     });
+  //   } else {
+  //     alert('Geolocation is not supported by this browser, please use google chrome.');
+  //   }
+  // }
+
+  // getAddress(latitude, longitude): void {
+  //   this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+  //     if (status === 'OK') {
+  //       if (results[0]) {
+  //         this.zoom = 18;
+  //         this.address = results[0].formatted_address;
+  //       } else {
+  //         window.alert('No results found');
+  //       }
+  //     } else {
+  //       window.alert('Geocoder failed due to: ' + status);
+  //     }
+  //   });
+  // }
 
   isCheckLogin(isLogin): void {
     this.isLogin = isLogin;
