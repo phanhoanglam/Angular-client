@@ -2,7 +2,7 @@ import { AuthenticationService } from '@core/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginRegisterPopupComponent } from 'app/modules/popup/login-register-popup/login-register-popup.component';
-import { User } from '@core/models/user';
+import { CurrentUser } from '@core/models/currentUser';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ import { User } from '@core/models/user';
 })
 export class HeaderComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: CurrentUser;
 
   constructor(
     public dialog: MatDialog,
