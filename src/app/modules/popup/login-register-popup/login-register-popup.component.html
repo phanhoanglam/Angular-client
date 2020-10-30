@@ -13,7 +13,7 @@
 			<li><a (click)="isCheckLogin(false)" class="register">Register</a></li>
 
 		</ul>
-		
+
 		<div class="popup-tabs-container">
 
 			<!-- Login -->
@@ -59,7 +59,7 @@
 				</form>
 
 				<!-- Button -->
-				<button class="button full-width button-sliding-icon ripple-effect btnLogin" [disabled]="loading"
+				<button [disabled]="loginForm.invalid" class="button full-width button-sliding-icon ripple-effect btnLogin" [disabled]="loading"
 					type="submit" form="login-form">Log
 					In <i class="icon-material-outline-arrow-right-alt"></i></button>
 
@@ -99,43 +99,51 @@
 				</div>
 
 				<!-- Form -->
-				<form id="register-account-form">
-					<div class="form-name">
+				<form [formGroup]="registerForm" (ngSubmit)="onRegister()" id="register-account-form">
+					<div class="form-name" *ngIf="isEmployee">
 						<div class="input-with-icon-left">
 							<i class="icon-material-baseline-mail-outline"></i>
-							<input type="text" class="input-text with-border" name="firstName" id="firstname-register"
-								placeholder="FirstName" required />
+							<input formControlName="firstName" type="text" class="input-text with-border"
+								name="firstName" id="firstname-register" placeholder="FirstName" required />
 						</div>
 						<div class="input-with-icon-left">
 							<i class="icon-material-baseline-mail-outline"></i>
-							<input type="text" class="input-text with-border" name="lastName" id="lastname-register"
-								placeholder="LastName" required />
+							<input formControlName="lastName" type="text" class="input-text with-border" name="lastName"
+								id="lastname-register" placeholder="LastName" required />
 						</div>
+					</div>
+					<div class="input-with-icon-left" *ngIf="!isEmployee">
+						<i class="icon-material-baseline-mail-outline"></i>
+						<input formControlName="fullname" type="text" class="input-text with-border"
+							name="fullname" id="emailaddress-register" placeholder="Name"
+							required />
 					</div>
 					<div class="input-with-icon-left">
 						<i class="icon-material-baseline-mail-outline"></i>
-						<input type="text" class="input-text with-border" name="emailaddress-register"
-							id="emailaddress-register" placeholder="Email Address" required />
+						<input formControlName="email" type="text" class="input-text with-border"
+							name="emailaddress-register" id="emailaddress-register" placeholder="Email Address"
+							required />
 					</div>
 					<div class="form-name">
 						<div class="input-with-icon-left" title="Should be at least 8 characters long"
 							data-tippy-placement="bottom">
 							<i class="icon-material-outline-lock"></i>
-							<input type="password" class="input-text with-border" name="password-register"
-								id="password-register" placeholder="Password" required />
+							<input formControlName="password" type="password" class="input-text with-border"
+								name="password-register" id="password-register" placeholder="Password" required />
 						</div>
 						<div class="input-with-icon-left">
 							<i class="icon-material-outline-lock"></i>
-							<input type="password" class="input-text with-border" name="password-repeat-register"
-								id="password-repeat-register" placeholder="Repeat Password" required />
+							<input formControlName="repeatPassword" type="password" class="input-text with-border"
+								name="password-repeat-register" id="password-repeat-register"
+								placeholder="Repeat Password" required />
 						</div>
 					</div>
 					<div class="input-with-icon-left">
 						<i class="icon-material-baseline-mail-outline"></i>
-						<input type="text" class="input-text with-border" name="phone-register" id="phone-register"
-							placeholder="Phone" />
+						<input formControlName="phone" type="text" class="input-text with-border" name="phone-register"
+							id="phone-register" placeholder="Phone" />
 					</div>
-					<div class="input-with-icon-left" >
+					<div class="input-with-icon-left">
 						<i class="icon-material-baseline-mail-outline"></i>
 						<!-- <input type="text" class="input-text with-border" name="emailaddress-register"
 							id="emailaddress-register" placeholder="Address" required /> -->
@@ -143,16 +151,17 @@
 						<!-- <input matInput name="searcheee" #search placeholder="Address" type="text" [value]="address"
 							class="input-text with-border" (keydown.enter)="$event.preventDefault()"/> -->
 
-							<input type="text" id="sea" [(ngModel)]="address" [ngModelOptions]="{standalone: true}" googleMapsAutocomplete
-                            (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                            (onLocationSelected)="onLocationSelected($event)"/>
+							<input type="text" placeholder="Address" name="address"
+							class="input-text with-border" [(ngModel)]="address" [ngModelOptions]="{standalone: true}"
+							googleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)"
+							(onLocationSelected)="onLocationSelected($event)" />
+
 					</div>
 				</form>
-				
+
 				<!-- Button -->
-				<button (click)="onRegister()" class="margin-top-10 button full-width button-sliding-icon ripple-effect"
-					type="submit" form="register-account-form">Register <i
-						class="icon-material-outline-arrow-right-alt"></i></button>
+				<button [disabled]="registerForm.invalid" class="margin-top-10 button full-width button-sliding-icon ripple-effect" type="submit"
+					form="register-account-form">Register <i class="icon-material-outline-arrow-right-alt"></i></button>
 
 				<!-- Social Login -->
 				<div class="social-login-separator"><span>or</span></div>

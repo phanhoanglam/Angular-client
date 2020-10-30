@@ -23,5 +23,19 @@
         </li>
       </ul>
     </li>
+
+    <li><a [routerLink]="jobRoutes.dashboardPath">Dashboard</a>
+      <ul class="dropdown-nav">
+        <li>
+          <a [routerLink]="jobRoutes.dashboardPath">Dashboard</a>
+        </li>
+        <li>
+          <a [routerLink]="dashboardRouters.dashboardMessage">Message</a>
+        </li>
+        <li>
+          <a [routerLink]="dashboardRouters.dashboardSetting">Setting</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
