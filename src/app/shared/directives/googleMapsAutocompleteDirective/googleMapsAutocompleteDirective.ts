@@ -7,7 +7,7 @@ import PlaceResult = google.maps.places.PlaceResult;
 import AutocompleteOptions = google.maps.places.AutocompleteOptions;
 
 @Directive({
-  selector: '[googleMapsAutocomplete]',
+  selector: '[appGoogleMapsAutocomplete]',
   exportAs: 'googleMapsAutocomplete'
 })
 export class GoogleMapsAutocompleteDirective implements OnInit {

@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     MatDialogModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports: [
     BrowserModule,

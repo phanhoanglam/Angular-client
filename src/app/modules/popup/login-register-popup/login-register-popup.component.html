@@ -153,7 +153,7 @@
 
 							<input type="text" placeholder="Address" name="address"
 							class="input-text with-border" [(ngModel)]="address" [ngModelOptions]="{standalone: true}"
-							googleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)"
+							appGoogleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)"
 							(onLocationSelected)="onLocationSelected($event)" />
 
 					</div>
