@@ -2,179 +2,153 @@
 ================================================== -->
 <div>
 
-	<!--Tabs -->
-	<div class="sign-in-form">
+    <!--Tabs -->
+    <div class="sign-in-form">
 
-		<ul class="popup-tabs-nav">
-			<li style="float: right;"><a (click)="close(true)" class="close"><span class="material-icons">
+        <ul class="popup-tabs-nav">
+            <li style="float: right;"><a (click)="close(true)" class="close"><span class="material-icons">
 						close
 					</span></a></li>
-			<li><a (click)="isCheckLogin(true)" class="login">Log In</a></li>
-			<li><a (click)="isCheckLogin(false)" class="register">Register</a></li>
+            <li><a (click)="isCheckLogin(true)" class="login">Log In</a></li>
+            <li><a (click)="isCheckLogin(false)" class="register">Register</a></li>
 
-		</ul>
+        </ul>
 
-		<div class="popup-tabs-container">
+        <div class="popup-tabs-container">
 
-			<!-- Login -->
-			<div *ngIf="isLogin == true" class="popup-tab-content" id="login">
+            <!-- Login -->
+            <div *ngIf="isLogin == true" class="popup-tab-content" id="login">
 
-				<!-- Welcome Text -->
-				<div class="welcome-text">
-					<h3>We're glad to see you again!</h3>
-					<span>Don't have an account? <a (click)="isLogin = false" href="#" class="register-tab">Sign
+                <!-- Welcome Text -->
+                <div class="welcome-text">
+                    <h3>We're glad to see you again!</h3>
+                    <span>Don't have an account? <a (click)="isLogin = false" href="#" class="register-tab">Sign
 							Up!</a></span>
-				</div>
+                </div>
 
-				<!-- Account Type -->
-				<div class="account-type">
-					<div>
-						<input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio"
-							checked />
-						<label (click)="isCheck(true)" for="freelancer-radio" class="ripple-effect-dark"><i
+                <!-- Account Type -->
+                <div class="account-type">
+                    <div>
+                        <input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio" checked />
+                        <label (click)="isCheck(true)" for="freelancer-radio" class="ripple-effect-dark"><i
 								class="icon-material-outline-account-circle"></i> Freelancer</label>
-					</div>
+                    </div>
 
-					<div>
-						<input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio" />
-						<label (click)="isCheck(false)" for="employer-radio" class="ripple-effect-dark"><i
+                    <div>
+                        <input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio" />
+                        <label (click)="isCheck(false)" for="employer-radio" class="ripple-effect-dark"><i
 								class="icon-material-outline-business-center"></i> Employer</label>
-					</div>
-				</div>
+                    </div>
+                </div>
 
-				<!-- Form -->
-				<form [formGroup]="loginForm" (ngSubmit)="onLogin()" id="login-form">
-					<div class="input-with-icon-left">
-						<i class="icon-material-baseline-mail-outline"></i>
-						<input type="text" formControlName="email" class="input-text with-border" name="emailaddress"
-							id="emailaddress" placeholder="Email Address" required />
-					</div>
+                <!-- Form -->
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()" id="login-form">
+                    <div class="input-with-icon-left">
+                        <i class="icon-material-baseline-mail-outline"></i>
+                        <input type="text" formControlName="email" class="input-text with-border" name="emailaddress" id="emailaddress" placeholder="Email Address" required />
+                    </div>
 
-					<div class="input-with-icon-left">
-						<i class="icon-material-outline-lock"></i>
-						<input type="password" formControlName="password" class="input-text with-border" name="password"
-							id="password" placeholder="Password" required />
-					</div>
-					<a href="#" class="forgot-password">Forgot Password?</a>
-				</form>
+                    <div class="input-with-icon-left">
+                        <i class="icon-material-outline-lock"></i>
+                        <input type="password" formControlName="password" class="input-text with-border" name="password" id="password" placeholder="Password" required />
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </form>
 
-				<!-- Button -->
-				<button [disabled]="loginForm.invalid" class="button full-width button-sliding-icon ripple-effect btnLogin" [disabled]="loading"
-					type="submit" form="login-form">Log
+                <!-- Button -->
+                <button [disabled]="loginForm.invalid" class="button full-width button-sliding-icon ripple-effect btnLogin" [disabled]="loading" type="submit" form="login-form">Log
 					In <i class="icon-material-outline-arrow-right-alt"></i></button>
 
-				<!-- Social Login -->
-				<div class="social-login-separator"><span>or</span></div>
-				<div class="social-login-buttons">
-					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via
+                <!-- Social Login -->
+                <div class="social-login-separator"><span>or</span></div>
+                <div class="social-login-buttons">
+                    <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Log In via
 						Facebook</button>
-					<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Log In via
+                    <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Log In via
 						Google+</button>
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-			<!-- Register -->
-			<div *ngIf="!isLogin" class="popup-tab-content" id="register">
+            <!-- Register -->
+            <div *ngIf="!isLogin" class="popup-tab-content" id="register">
 
-				<!-- Welcome Text -->
-				<div class="welcome-text">
-					<h3>Let's create your account!</h3>
-				</div>
+                <!-- Welcome Text -->
+                <div class="welcome-text">
+                    <h3>Let's create your account!</h3>
+                </div>
 
-				<!-- Account Type -->
-				<div class="account-type">
-					<div>
-						<input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio"
-							checked />
-						<label (click)="isCheck(true)" for="freelancer-radio" class="ripple-effect-dark"><i
+                <!-- Account Type -->
+                <div class="account-type">
+                    <div>
+                        <input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio" checked />
+                        <label (click)="isCheck(true)" for="freelancer-radio" class="ripple-effect-dark"><i
 								class="icon-material-outline-account-circle"></i> Freelancer</label>
-					</div>
+                    </div>
 
-					<div>
-						<input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio" />
-						<label (click)="isCheck(false)" for="employer-radio" class="ripple-effect-dark"><i
+                    <div>
+                        <input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio" />
+                        <label (click)="isCheck(false)" for="employer-radio" class="ripple-effect-dark"><i
 								class="icon-material-outline-business-center"></i> Employer</label>
-					</div>
-				</div>
+                    </div>
+                </div>
 
-				<!-- Form -->
-				<form [formGroup]="registerForm" (ngSubmit)="onRegister()" id="register-account-form">
-					<div class="form-name" *ngIf="isEmployee">
-						<div class="input-with-icon-left">
-							<i class="icon-material-baseline-mail-outline"></i>
-							<input formControlName="firstName" type="text" class="input-text with-border"
-								name="firstName" id="firstname-register" placeholder="FirstName" required />
-						</div>
-						<div class="input-with-icon-left">
-							<i class="icon-material-baseline-mail-outline"></i>
-							<input formControlName="lastName" type="text" class="input-text with-border" name="lastName"
-								id="lastname-register" placeholder="LastName" required />
-						</div>
-					</div>
-					<div class="input-with-icon-left" *ngIf="!isEmployee">
-						<i class="icon-material-baseline-mail-outline"></i>
-						<input formControlName="fullname" type="text" class="input-text with-border"
-							name="fullname" id="emailaddress-register" placeholder="Name"
-							required />
-					</div>
-					<div class="input-with-icon-left">
-						<i class="icon-material-baseline-mail-outline"></i>
-						<input formControlName="email" type="text" class="input-text with-border"
-							name="emailaddress-register" id="emailaddress-register" placeholder="Email Address"
-							required />
-					</div>
-					<div class="form-name">
-						<div class="input-with-icon-left" title="Should be at least 8 characters long"
-							data-tippy-placement="bottom">
-							<i class="icon-material-outline-lock"></i>
-							<input formControlName="password" type="password" class="input-text with-border"
-								name="password-register" id="password-register" placeholder="Password" required />
-						</div>
-						<div class="input-with-icon-left">
-							<i class="icon-material-outline-lock"></i>
-							<input formControlName="repeatPassword" type="password" class="input-text with-border"
-								name="password-repeat-register" id="password-repeat-register"
-								placeholder="Repeat Password" required />
-						</div>
-					</div>
-					<div class="input-with-icon-left">
-						<i class="icon-material-baseline-mail-outline"></i>
-						<input formControlName="phone" type="text" class="input-text with-border" name="phone-register"
-							id="phone-register" placeholder="Phone" />
-					</div>
-					<div class="input-with-icon-left">
-						<i class="icon-material-baseline-mail-outline"></i>
-						<!-- <input type="text" class="input-text with-border" name="emailaddress-register"
-							id="emailaddress-register" placeholder="Address" required /> -->
-						<!-- cai input cho nay bi đè thuộc tính của ngFor rồi -->
-						<!-- <input matInput name="searcheee" #search placeholder="Address" type="text" [value]="address"
-							class="input-text with-border" (keydown.enter)="$event.preventDefault()"/> -->
+                <!-- Form -->
+                <form [formGroup]="registerForm" (ngSubmit)="onRegister()" id="register-account-form">
+                    <div class="form-name" *ngIf="isEmployee">
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-baseline-mail-outline"></i>
+                            <input formControlName="firstName" type="text" class="input-text with-border" name="firstName" id="firstname-register" placeholder="FirstName" required />
+                        </div>
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-baseline-mail-outline"></i>
+                            <input formControlName="lastName" type="text" class="input-text with-border" name="lastName" id="lastname-register" placeholder="LastName" required />
+                        </div>
+                    </div>
+                    <div class="input-with-icon-left" *ngIf="!isEmployee">
+                        <i class="icon-material-baseline-mail-outline"></i>
+                        <input type="text" class="input-text with-border" name="fullname" id="emailaddress-register" placeholder="Name" required />
+                    </div>
+                    <div class="input-with-icon-left">
+                        <i class="icon-material-baseline-mail-outline"></i>
+                        <input formControlName="email" type="text" class="input-text with-border" name="emailaddress-register" id="emailaddress-register" placeholder="Email Address" required />
+                    </div>
+                    <div class="form-name">
+                        <div class="input-with-icon-left" title="Should be at least 8 characters long" data-tippy-placement="bottom">
+                            <i class="icon-material-outline-lock"></i>
+                            <input formControlName="password" type="password" class="input-text with-border" name="password-register" id="password-register" placeholder="Password" required />
+                        </div>
+                        <div class="input-with-icon-left">
+                            <i class="icon-material-outline-lock"></i>
+                            <input formControlName="repeatPassword" type="password" class="input-text with-border" name="password-repeat-register" id="password-repeat-register" placeholder="Repeat Password" required />
+                        </div>
+                    </div>
+                    <div class="input-with-icon-left">
+                        <i class="icon-material-baseline-mail-outline"></i>
+                        <input formControlName="phone" type="text" class="input-text with-border" name="phone-register" id="phone-register" placeholder="Phone" />
+                    </div>
+                    <div class="input-with-icon-left">
+                        <i class="icon-material-baseline-mail-outline"></i>
+                        <input type="text" placeholder="Address" name="address" class="input-text with-border" [(ngModel)]="address" [ngModelOptions]="{standalone: true}" appGoogleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)" (onLocationSelected)="onLocationSelected($event)"
+                        />
+                    </div>
+                </form>
 
-							<input type="text" placeholder="Address" name="address"
-							class="input-text with-border" [(ngModel)]="address" [ngModelOptions]="{standalone: true}"
-							appGoogleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)"
-							(onLocationSelected)="onLocationSelected($event)" />
+                <!-- Button -->
+                <button class="margin-top-10 button full-width button-sliding-icon ripple-effect" type="submit" form="register-account-form">Register <i class="icon-material-outline-arrow-right-alt"></i></button>
 
-					</div>
-				</form>
-
-				<!-- Button -->
-				<button [disabled]="registerForm.invalid" class="margin-top-10 button full-width button-sliding-icon ripple-effect" type="submit"
-					form="register-account-form">Register <i class="icon-material-outline-arrow-right-alt"></i></button>
-
-				<!-- Social Login -->
-				<div class="social-login-separator"><span>or</span></div>
-				<div class="social-login-buttons">
-					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Register via
+                <!-- Social Login -->
+                <div class="social-login-separator"><span>or</span></div>
+                <div class="social-login-buttons">
+                    <button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Register via
 						Facebook</button>
-					<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Register via
+                    <button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Register via
 						Google+</button>
-				</div>
+                </div>
 
-			</div>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 <!-- Sign In Popup / End -->

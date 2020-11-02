@@ -1,5 +1,5 @@
 <div id="main">
-  <app-header></app-header>
-  <app-content></app-content>
-  <app-footer *ngIf="!router.url.includes(linkDashboard)"></app-footer>
+    <app-header></app-header>
+    <app-content></app-content>
+    <app-footer *ngIf="!router.url.includes(linkDashboard) && !router.url.includes(linkJobs)"></app-footer>
 </div>

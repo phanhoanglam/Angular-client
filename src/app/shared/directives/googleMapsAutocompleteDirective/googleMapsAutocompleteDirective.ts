@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Directive, OnInit, Input, Output, EventEmitter, Inject, PLATFORM_ID, ElementRef, NgZone } from '@angular/core';
+import { Directive, OnInit, Input, Output, EventEmitter, Inject, PLATFORM_ID, ElementRef, NgZone, ChangeDetectorRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { MapsAPILoader } from '@agm/core';
 import { Location } from '../../interfaces/location.interface';
@@ -14,23 +14,12 @@ export class GoogleMapsAutocompleteDirective implements OnInit {
 
   @Input()
   address: PlaceResult | string;
-
-  // @Input()
-  // country: string | string[];
-
-  @Input()
-  autoCompleteOptions: AutocompleteOptions = {};
-
-  @Output()
-  onChange: EventEmitter<PlaceResult | string | null> = new EventEmitter<PlaceResult | string | null>();
-
+  
   @Output()
   onAutocompleteSelected: EventEmitter<PlaceResult> = new EventEmitter<PlaceResult>();
 
   @Output()
   onLocationSelected: EventEmitter<Location> = new EventEmitter<Location>();
-
-  private onNewPlaceResult: EventEmitter<any> = new EventEmitter();
 
   constructor(@Inject(PLATFORM_ID) public platformId: string,
     public elemRef: ElementRef,
@@ -38,12 +27,9 @@ export class GoogleMapsAutocompleteDirective implements OnInit {
     private ngZone: NgZone) { }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const options: AutocompleteOptions = {};
-
-      this.autoCompleteOptions = Object.assign(this.autoCompleteOptions, {});
+    // if (isPlatformBrowser(this.platformId)) {
       this.initGoogleMapsAutocomplete();
-    }
+    // }
 
   }
 
@@ -51,14 +37,11 @@ export class GoogleMapsAutocompleteDirective implements OnInit {
     this.mapsAPILoader
       .load()
       .then(() => {
-        let autocomplete = new google.maps.places.Autocomplete(this.elemRef.nativeElement, this.autoCompleteOptions);
-
-        // google.maps.event.addListener(autocomplete, 'place_changed', () => {
-        //     console.log('aaaaaaaaaa');
-        // });
+        const autocomplete = new google.maps.places.Autocomplete(this.elemRef.nativeElement);
 
         autocomplete.addListener('place_changed', () => {
           this.ngZone.run(() => {
+
             // get the place result
             const place: PlaceResult = autocomplete.getPlace();
 
@@ -70,6 +53,7 @@ export class GoogleMapsAutocompleteDirective implements OnInit {
               // emit failed event
             }
             this.address = place.formatted_address;
+
             this.onAutocompleteSelected.emit(place);
             this.onLocationSelected.emit(
               {

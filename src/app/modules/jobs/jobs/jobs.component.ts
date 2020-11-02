@@ -29,11 +29,11 @@ export class JobsComponent implements OnInit {
     if(pageEvent === undefined){
       pageEvent = this.pageIndex;
     }
-    const parmas = { page: pageEvent };
+    const parmas = { page: pageEvent, size: 12 };
     this._jobService.filter(parmas).subscribe((res: any) => {
       this.jobs = res.content;
       this.totalElement = res.totalElements;
-      console.log('a >>>> ', this.totalElement);
+      console.log(this.jobs);
     });
   }
 }

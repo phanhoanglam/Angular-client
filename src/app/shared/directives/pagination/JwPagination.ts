@@ -12,7 +12,7 @@ import paginate from 'jw-paginate';
                                 <li [ngClass]="{disabled:pager.currentPage === 1}" class="pagination-arrow poiter">
                                     <a (click)="setPage(pager.currentPage - 1)" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-left"></i></a>
                                 </li>
-                                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="poiter">
+                                <li *ngFor="let page of pager.pages" [ngClass]="{activePaging:pager.currentPage === page}" class="poiter">
                                     <a (click)="setPage(page)" class="ripple-effect">{{page}}</a>
                                 </li>
                                 <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="pagination-arrow poiter">
@@ -27,7 +27,7 @@ export class JwPaginationComponent implements OnInit {
     @Input() totalElement = 0;
     @Output() changePage = new EventEmitter<any>(true);
     @Input() pageIndex: number;
-    @Input() pageSize = 10;
+    @Input() pageSize = 12;
     @Input() maxPages = 4;
 
     pager: any = {};

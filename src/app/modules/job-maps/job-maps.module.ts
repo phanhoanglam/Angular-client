@@ -15,10 +15,9 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     CommonModule,
     AgmCoreModule.forRoot({
-      // apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
-      apiVersion: 'quarterly',
-      libraries: ['places', 'geometry']
-    })
+      apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
+      libraries: ['places'],
+    }),
   ],
 })
 export class JobMapsModule { }
