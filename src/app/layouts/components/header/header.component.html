@@ -207,7 +207,7 @@
                                     <div class="user-avatar status-online"><img src="{{currentUser.avatar}}" alt=""></div>
                                     <div class="user-name">
                                         {{currentUser.isEmployee ? currentUser.firstName + ' ' + currentUser.lastName : currentUser.name}}
-                                        <span>Freelancer</span>
+                                        <span>{{currentUser.isEmployee ? 'Freelancer' : 'Employer'}}</span>
                                     </div>
                                 </div>
 
