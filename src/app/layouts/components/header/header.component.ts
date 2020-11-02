@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(LoginRegisterPopupComponent, { panelClass: 'custom-dialog-container' });
   }
 
-  logout(){
+  logout(): void{
     this._authenticationService.logout();
   }
 }

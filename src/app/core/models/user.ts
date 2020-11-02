@@ -7,6 +7,8 @@ export class UserEmployee implements TransferBaseModel {
     phone: string;
     email: string;
     password: string;
+    address: string;
+    addressLocation: AddressLocation;
 }
 
 export class UserEmployer implements TransferBaseModel {
@@ -15,4 +17,11 @@ export class UserEmployer implements TransferBaseModel {
     phone: string;
     email: string;
     password: string;
+    address: string;
+    addressLocation: AddressLocation;
+}
+
+export class AddressLocation {
+    x: number;
+    y: number;
 }

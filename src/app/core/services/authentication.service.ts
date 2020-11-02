@@ -32,8 +32,9 @@ export class AuthenticationService {
     }
 
     loginEmployer(email: string, password: string): Observable<CurrentUser> {
-        return this.http.post<any>(`${environment.apiUrl}/api/employer/login`, { email, password })
+        return this.http.post<any>(`${environment.apiUrl}/api/employers/login`, { email, password })
             .pipe(map(user => {
+                console.log('ER >> ', user);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.data.isEmployee = false;
                 localStorage.setItem('currentUser', JSON.stringify(user.data));
