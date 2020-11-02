@@ -3,6 +3,7 @@ export class CurrentUser {
     email: string;
     firstName: string;
     lastName: string;
+    name: string;
     address: string;
     phone: string;
     avatar: string;

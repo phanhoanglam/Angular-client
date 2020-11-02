@@ -145,6 +145,25 @@ select {
 	box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.12);
 }
 
+.poiter{
+	cursor: pointer;
+	margin-left: 2px;
+    margin-right: 2px;
+}
+
+.active{
+	background-color: blue;
+    color: white;
+	border-radius: 5px;
+	pointer-events: none;
+    cursor: default;
+}
+
+.disabled{
+	pointer-events: none;
+    cursor: default;
+}
+
 select {
 	padding: 15px 18px;
 	cursor: pointer;
@@ -2550,6 +2569,8 @@ em.mm-counter+a.mm-fullsubopen+span {
 	display: inline-block;
 	margin: 0;
 	padding: 0;
+	margin-left: 2px;
+    margin-right: 2px;
 }
 
 

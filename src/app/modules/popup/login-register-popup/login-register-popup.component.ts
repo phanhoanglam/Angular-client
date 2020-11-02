@@ -1,12 +1,13 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserEmployee, UserEmployer } from './../../../core/models/User';
+import { EmployeeService } from './../../../core/services/employee.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationService } from '@core/services/authentication.service';
-import { Component, ElementRef, NgZone, OnInit, ViewChild, AfterViewInit, QueryList } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { MapsAPILoader } from '@agm/core';
-import { ViewChildren } from '@angular/core';
 import PlaceResult = google.maps.places.PlaceResult;
+import { EmployerService } from '@core/services/employer.service';
 
 @Component({
   selector: 'app-login-register-popup',
@@ -21,15 +22,17 @@ export class LoginRegisterPopupComponent implements OnInit {
   returnUrl: string;
   isEmployee = true;
 
+  registerForm: FormGroup;
+
   address: string;
 
   constructor(
     private _authenticationService: AuthenticationService,
+    private _employeeService: EmployeeService,
+    private _employerService: EmployerService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
     private _dialogRef: MatDialogRef<LoginRegisterPopupComponent>
   ) {
     if (this._authenticationService.currentUserValue) {
@@ -40,6 +43,7 @@ export class LoginRegisterPopupComponent implements OnInit {
   }
 
   get f() { return this.loginForm.controls; }
+  get r() { return this.registerForm.controls; }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -49,8 +53,16 @@ export class LoginRegisterPopupComponent implements OnInit {
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
-
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      repeatPassword: ['', Validators.required],
+      phone: ['', Validators.required]
+    });
   }
+
 
   onAutocompleteSelected(result: PlaceResult): void {
     console.log('log 2 > ', result);
@@ -132,7 +144,34 @@ export class LoginRegisterPopupComponent implements OnInit {
   }
 
   onRegister(): void {
-    // console.log("Employee >>> ", this.isEmployee);
+    console.log(this.r);
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    if (this.isEmployee) {
+      const user = new UserEmployee();
+      user.email = this.r.email.value;
+      user.firstName = this.r.firstName.value;
+      user.lastName = this.r.email.value;
+      user.password = this.r.email.value;
+      user.phone = this.r.email.value;
+
+      this._employeeService.create(user).subscribe(res => {
+        console.log('Employee');
+      });
+    } else {
+      const user = new UserEmployer();
+      user.email = this.r.email.value;
+      user.name = this.r.fullname.value;
+      user.password = this.r.password.value;
+      user.phone = this.r.phone.value;
+
+      this._employerService.create(user).subscribe(res => {
+        console.log('Employee');
+      });
+    }
   }
 
   close(result: any): void {

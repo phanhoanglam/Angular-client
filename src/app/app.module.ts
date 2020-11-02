@@ -15,12 +15,14 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { JwPaginationComponent } from './shared/directives/pagination/JwPagination';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterPopupComponent,
-    GoogleMapsAutocompleteDirective
+    GoogleMapsAutocompleteDirective,
+    // JwPaginationComponent
   ],
   imports: [
     AppRoutingModule,
@@ -33,9 +35,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDialogModule,
     MatFormFieldModule,
     AgmCoreModule.forRoot({
-      apiKey: '',
-      language: 'vn',
-      libraries: ['places', 'geometry'],
+      // apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
+      libraries: ['places'],
     }),
   ],
   exports: [

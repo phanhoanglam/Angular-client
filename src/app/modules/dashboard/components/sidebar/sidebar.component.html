@@ -1,7 +1,7 @@
 <!-- Dashboard Sidebar
 	================================================== -->
 <div class="dashboard-sidebar">
-	<div class="dashboard-sidebar-inner" data-simplebar>
+	<div class="dashboard-sidebar-inner" style="height: 672px;" data-simplebar>
 		<div class="dashboard-nav-container">
 
 			<!-- Responsive Navigation Trigger -->
@@ -25,9 +25,17 @@
 								<i class="icon-material-outline-dashboard"></i>Dashboard
 							</a>
 						</li>
-						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/dashboard/message']" [routerLinkActive]="['active']"><i
+						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
+								[routerLink]="['/dashboard/message']" [routerLinkActive]="['active']"><i
 									class="icon-material-outline-question-answer"></i>Messages<span
 									class="nav-tag">2</span></a></li>
+					</ul>
+					<ul data-submenu-title="Account">
+						<li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a
+								[routerLink]="['/dashboard/setting']" [routerLinkActive]="['active']"><i
+									class="icon-material-outline-settings"></i>Settings</a></li>
+						<li><a href="javascript:void(0)" (click)="logout()"><i
+									class="icon-material-outline-power-settings-new"></i>Logout</a></li>
 					</ul>
 				</div>
 			</div>

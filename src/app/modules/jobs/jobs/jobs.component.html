@@ -140,7 +140,7 @@
 
 			<h3 class="page-title">Search Results</h3>
 
-			<div class="notify-box margin-top-15">
+			<!-- <div class="notify-box margin-top-15">
 				<div class="switch-container">
 					<label class="switch"><input type="checkbox"><span class="switch-button"></span><span class="switch-text">Turn on email alerts for this search</span></label>
 				</div>
@@ -154,24 +154,24 @@
 						<option>Random</option>
 					</select>
 				</div>
-			</div>
+			</div> -->
 
-			<div class="listings-container grid-layout margin-top-35">
+			<div class="listings-container grid-layout margin-top-35" >
 				
 				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
+				<a *ngFor="let job of jobs" href="single-job-page.html" class="job-listing">
 
 					<!-- Job Listing Details -->
 					<div class="job-listing-details">
 						<!-- Logo -->
 						<div class="job-listing-company-logo">
-							<img src="images/company-logo-01.png" alt="">
+							<img src="{{job.employer.avatar}}" alt="">
 						</div>
 
 						<!-- Details -->
 						<div class="job-listing-description">
-							<h4 class="job-listing-company">Hexagon <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-							<h3 class="job-listing-title">Bilingual Event Support Specialist</h3>
+							<h4 class="job-listing-company">{{job.employer.name}} <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+							<h3 class="job-listing-title">{{job.name}}</h3>
 						</div>
 					</div>
 
@@ -179,351 +179,18 @@
 					<div class="job-listing-footer">
 						<span class="bookmark-icon"></span>
 						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>	
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-05.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Laxo</h4>
-							<h3 class="job-listing-title">Competition Law Officer</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
+							<li [matTooltip]="job.address"><i class="icon-material-outline-location-on"></i> {{job.address.substring(0, job.address.indexOf(','))}}</li>
+							<!-- <li><i class="icon-material-outline-business-center"></i> Full Time</li> -->
+							<li><i class="icon-material-outline-account-balance-wallet"></i> {{job.slaryFrom == null ? 0 : job.slaryFrom}} - {{job.slaryTo == null ? 0 : job.slaryTo}}</li>
 							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
 						</ul>
 					</div>
 				</a>
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-02.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Coffee</h4>
-							<h3 class="job-listing-title">Barista and Cashier</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-				
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-03.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-							<h3 class="job-listing-title">Restaurant General Manager</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-05.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Skyist</h4>
-							<h3 class="job-listing-title">International Marketing Coordinator</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-05.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Podous</h4>
-							<h3 class="job-listing-title">Construction Labourers</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-04.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Mates</h4>
-							<h3 class="job-listing-title">Administrative Assistant</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-06.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Trideo</h4>
-							<h3 class="job-listing-title">Human Resources Consultant</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-				
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-06.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Trideo</h4>
-							<h3 class="job-listing-title">International Marketing Specialist</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-				
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-02.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Coffee</h4>
-							<h3 class="job-listing-title">Terrain Cafe Barista</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-				
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-05.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Kinte</h4>
-							<h3 class="job-listing-title">Skilled Labourer</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-
-				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing">
-
-					<!-- Job Listing Details -->
-					<div class="job-listing-details">
-						<!-- Logo -->
-						<div class="job-listing-company-logo">
-							<img src="images/company-logo-05.png" alt="">
-						</div>
-
-						<!-- Details -->
-						<div class="job-listing-description">
-							<h4 class="job-listing-company">Alilia</h4>
-							<h3 class="job-listing-title">Healthcare Claims Advisor</h3>
-						</div>
-					</div>
-
-					<!-- Job Listing Footer -->
-					<div class="job-listing-footer">
-						<span class="bookmark-icon"></span>
-						<ul>
-							<li><i class="icon-material-outline-location-on"></i> San Francissco</li>
-							<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-							<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-							<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-						</ul>
-					</div>
-				</a>
-
 			</div>
 
 			<!-- Pagination -->
 			<div class="clearfix"></div>
-			<div class="pagination-container margin-top-20 margin-bottom-20">
-				<nav class="pagination">
-					<ul>
-						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
-						<li><a href="#" class="ripple-effect">1</a></li>
-						<li><a href="#" class="ripple-effect current-page">2</a></li>
-						<li><a href="#" class="ripple-effect">3</a></li>
-						<li><a href="#" class="ripple-effect">4</a></li>
-						<li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
-					</ul>
-				</nav>
-			</div>
+			<jw-pagination [totalElement]="totalElement" [pageIndex]="pageIndex" (changePage)="loadData($event)"></jw-pagination>
 			<div class="clearfix"></div>
 			<!-- Pagination / End -->
 
