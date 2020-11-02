@@ -21,8 +21,7 @@ import { JwPaginationComponent } from './shared/directives/pagination/JwPaginati
   declarations: [
     AppComponent,
     LoginRegisterPopupComponent,
-    GoogleMapsAutocompleteDirective,
-    // JwPaginationComponent
+    GoogleMapsAutocompleteDirective
   ],
   imports: [
     AppRoutingModule,

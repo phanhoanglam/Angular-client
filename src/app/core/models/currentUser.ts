@@ -8,5 +8,6 @@ export class CurrentUser {
     phone: string;
     avatar: string;
     slug: string;
+    isEmployee: boolean;
     token?: string;
 }

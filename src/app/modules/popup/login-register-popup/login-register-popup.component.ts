@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import PlaceResult = google.maps.places.PlaceResult;
 import { EmployerService } from '@core/services/employer.service';
+import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-login-register-popup',
@@ -22,6 +23,9 @@ export class LoginRegisterPopupComponent implements OnInit {
   returnUrl: string;
   isEmployee = true;
 
+  latitude: number;
+  longitude: number;
+
   registerForm: FormGroup;
 
   address: string;
@@ -33,13 +37,14 @@ export class LoginRegisterPopupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private mapsAPILoader: MapsAPILoader,
     private _dialogRef: MatDialogRef<LoginRegisterPopupComponent>
   ) {
     if (this._authenticationService.currentUserValue) {
       this.router.navigate(['/']);
     }
 
-
+    this.setCurrentLocation();
   }
 
   get f() { return this.loginForm.controls; }
@@ -65,45 +70,43 @@ export class LoginRegisterPopupComponent implements OnInit {
 
 
   onAutocompleteSelected(result: PlaceResult): void {
-    console.log('log 2 > ', result);
+    this.address = result.formatted_address;
   }
 
   onLocationSelected(event): void {
-    console.log('log 1 > ', event);
-
+    this.latitude = event.latitude;
+    this.longitude = event.longitude;
   }
 
+  // Get Current Location Coordinates
+  private setCurrentLocation(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.getAddress(this.latitude, this.longitude);
+      }, () => {
+        this.address = 'Address';
+      });
+    } else {
+      alert('Geolocation is not supported by this browser, please use google chrome.');
+    }
+  }
 
-  // // Get Current Location Coordinates
-  // private setCurrentLocation(): void {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       this.latitude = position.coords.latitude;
-  //       this.longitude = position.coords.longitude;
-  //       this.zoom = 14;
-  //       this.getAddress(this.latitude, this.longitude);
-  //     }, () => {
-  //       this.address = 'Choisir une adresse';
-  //     });
-  //   } else {
-  //     alert('Geolocation is not supported by this browser, please use google chrome.');
-  //   }
-  // }
-
-  // getAddress(latitude, longitude): void {
-  //   this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-  //     if (status === 'OK') {
-  //       if (results[0]) {
-  //         this.zoom = 18;
-  //         this.address = results[0].formatted_address;
-  //       } else {
-  //         window.alert('No results found');
-  //       }
-  //     } else {
-  //       window.alert('Geocoder failed due to: ' + status);
-  //     }
-  //   });
-  // }
+  getAddress(latitude, longitude) {
+    this.mapsAPILoader.load().then(() => {
+      let geocoder = new google.maps.Geocoder;
+      let latlng = { lat: latitude, lng: longitude };
+      let that = this;
+      geocoder.geocode({ 'location': latlng }, function (results) {
+        if (results[0]) {
+          that.address = results[0].formatted_address;
+        } else {
+          console.log('No results found');
+        }
+      });
+    });
+  }
 
   isCheckLogin(isLogin): void {
     this.isLogin = isLogin;
@@ -125,6 +128,7 @@ export class LoginRegisterPopupComponent implements OnInit {
         .pipe(first())
         .subscribe(
           data => {
+            this.close(true);
             this.router.navigate([this.returnUrl]);
           },
           error => {
@@ -135,6 +139,7 @@ export class LoginRegisterPopupComponent implements OnInit {
         .pipe(first())
         .subscribe(
           data => {
+            this.close(true);
             this.router.navigate([this.returnUrl]);
           },
           error => {
@@ -144,12 +149,14 @@ export class LoginRegisterPopupComponent implements OnInit {
   }
 
   onRegister(): void {
-    console.log(this.r);
+    console.log(this.address);
+    console.log(this.latitude, ',', this.longitude);
     if (this.registerForm.invalid) {
       return;
     }
 
     this.loading = true;
+    
     if (this.isEmployee) {
       const user = new UserEmployee();
       user.email = this.r.email.value;

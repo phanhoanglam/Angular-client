@@ -11,6 +11,7 @@ export class DefaultLayoutComponent implements OnInit {
 
   isHide = false;
   linkDashboard = JobRoutes.dashboardPath;
+  linkJobs = JobRoutes.basePath;
 
   constructor(
     public router: Router,
