@@ -157,11 +157,15 @@
 							(onLocationSelected)="onLocationSelected($event)" />
 
 					</div>
-				</form>
 
-				<!-- Button -->
-				<button [disabled]="registerForm.invalid" class="margin-top-10 button full-width button-sliding-icon ripple-effect" type="submit"
-					form="register-account-form">Register <i class="icon-material-outline-arrow-right-alt"></i></button>
+          <!-- Button -->
+          <button
+            [disabled]="registerForm.invalid"
+            class="margin-top-10 button full-width button-sliding-icon ripple-effect" [ngClass]="{disabled: registerForm.invalid}"
+          >
+            Register <i class="icon-material-outline-arrow-right-alt"></i>
+          </button>
+				</form>
 
 				<!-- Social Login -->
 				<div class="social-login-separator"><span>or</span></div>

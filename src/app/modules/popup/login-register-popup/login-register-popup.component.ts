@@ -145,9 +145,6 @@ export class LoginRegisterPopupComponent implements OnInit {
 
   onRegister(): void {
     console.log(this.r);
-    if (this.registerForm.invalid) {
-      return;
-    }
 
     this.loading = true;
     if (this.isEmployee) {
