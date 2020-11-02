@@ -6,13 +6,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardHomeComponent } from './components/dahsboard-home/dashboard-home.component';
 import { DashboardMessagesComponent } from './components/dashboard-messages/dashboard-messages.component';
+import { DashboardSettingsComponent } from './components/dashboard-settings/dashboard-settings.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DashboardHomeComponent,
-    DashboardMessagesComponent
+    DashboardMessagesComponent,
+    DashboardSettingsComponent
   ],
   imports: [
     CommonModule,

@@ -6,3 +6,10 @@ export class JobRoutes {
   static dashboardPath = 'dashboard';
 
 }
+
+export class DashboardRouters{
+  static message = 'message';
+  static setting = 'setting';
+  static dashboardMessage = 'dashboard/message';
+  static dashboardSetting = 'dashboard/setting';
+}
