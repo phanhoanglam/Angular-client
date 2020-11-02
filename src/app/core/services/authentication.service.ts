@@ -29,7 +29,7 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.data.isEmployee = true;
                 localStorage.setItem('currentUser', JSON.stringify(user.data));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user.data);
                 return user;
             }));
     }
@@ -41,7 +41,7 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.data.isEmployee = false;
                 localStorage.setItem('currentUser', JSON.stringify(user.data));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user.data);
                 return user;
             }));
     }
