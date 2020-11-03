@@ -34,9 +34,10 @@
 					</div>
 
 					<div class="uploadButton">
-						<input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload-cv" />
+						<input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload-cv" (change)="handleFileInput($event.target.files)" />
 						<label class="uploadButton-button ripple-effect" for="upload-cv">Select File</label>
-						<span class="uploadButton-file-name">Upload your CV / resume relevant file. <br> Max. file size: 50 MB.</span>
+						<span *ngIf="fileToUpload == null" class="uploadButton-file-name">Upload your CV / resume relevant file. <br> Max. file size: 50 MB.</span>
+						<span *ngIf="fileToUpload != null" class="uploadButton-file-name">{{fileToUpload?.name}}</span>
 					</div>
 
 				</form>

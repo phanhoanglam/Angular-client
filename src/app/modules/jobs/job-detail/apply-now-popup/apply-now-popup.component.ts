@@ -8,11 +8,18 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ApplyNowPopupComponent implements OnInit {
 
+  fileToUpload: File = null;
+
   constructor(
     private _dialogRef: MatDialogRef<ApplyNowPopupComponent>
   ) { }
 
   ngOnInit(): void {
+  }
+
+  handleFileInput(files: FileList): void {
+    this.fileToUpload = files.item(0);
+    console.log('file >>>> ', this.fileToUpload);
   }
 
   close(result: any): void {
