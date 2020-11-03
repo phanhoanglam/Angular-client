@@ -107,7 +107,7 @@
                     </div>
                     <div class="input-with-icon-left" *ngIf="!isEmployee">
                         <i class="icon-material-baseline-mail-outline"></i>
-                        <input type="text" class="input-text with-border" name="fullname" id="emailaddress-register" placeholder="Name" required />
+                        <input [(ngModel)]="fullname" [ngModelOptions]="{standalone: true}" type="text" class="input-text with-border" name="fullname" id="emailaddress-register" placeholder="Name" required />
                     </div>
                     <div class="input-with-icon-left">
                         <i class="icon-material-baseline-mail-outline"></i>

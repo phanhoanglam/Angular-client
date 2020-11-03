@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpHelper } from '@core/helpers/http.helper';
 import { omit } from 'lodash';
-import {TransferBaseModel} from '@core/models/transfer-base.model';
+import { TransferBaseModel } from '@core/models/transfer-base.model';
 
 export class CrudBaseService<T extends TransferBaseModel> {
   constructor(protected baseUrl: string, protected httpClient: HttpClient) {
@@ -22,9 +22,7 @@ export class CrudBaseService<T extends TransferBaseModel> {
   }
 
   create(model: T): Observable<any> {
-    return this.httpClient.post(this.baseUrl, {
-      data: omit(model, ['id'])
-    });
+    return this.httpClient.post(this.baseUrl, model);
   }
 
   update(id: string, model: T): Observable<any> {

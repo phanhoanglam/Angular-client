@@ -161,7 +161,7 @@
             <div class="listings-container grid-layout margin-top-35">
 
                 <!-- Job Listing -->
-                <a *ngFor="let job of jobs" href="single-job-page.html" class="job-listing">
+                <a *ngFor="let job of jobs" href="javascript:void(0)" [routerLink]="[ job.slug ]" class="job-listing">
 
                     <!-- Job Listing Details -->
                     <div class="job-listing-details">

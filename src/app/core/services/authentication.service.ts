@@ -8,16 +8,19 @@ import { CurrentUser } from '@core/models/currentUser';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<CurrentUser>;
+    private currentUserSubject: BehaviorSubject<CurrentUser> = new BehaviorSubject<CurrentUser>(JSON.parse(localStorage.getItem('currentUser')));
     public currentUser: Observable<CurrentUser>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<CurrentUser>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
     public get currentUserValue(): CurrentUser {
         return this.currentUserSubject.value;
+    }
+
+    public get currentUserObservable(): Observable<CurrentUser> {
+      return this.currentUserSubject.asObservable();
     }
 
     loginEmployee(email: string, password: string): Observable<CurrentUser> {
@@ -26,18 +29,19 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.data.isEmployee = true;
                 localStorage.setItem('currentUser', JSON.stringify(user.data));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user.data);
                 return user;
             }));
     }
 
     loginEmployer(email: string, password: string): Observable<CurrentUser> {
-        return this.http.post<any>(`${environment.apiUrl}/api/employer/login`, { email, password })
+        return this.http.post<any>(`${environment.apiUrl}/api/employers/login`, { email, password })
             .pipe(map(user => {
+                console.log('ER >> ', user);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 user.data.isEmployee = false;
                 localStorage.setItem('currentUser', JSON.stringify(user.data));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user.data);
                 return user;
             }));
     }

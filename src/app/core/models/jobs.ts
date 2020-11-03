@@ -1,14 +1,19 @@
+import { JobCategory } from './job-category';
 import { TransferBaseModel } from './transfer-base.model';
 import { JobType } from './job-type';
 export interface Job extends TransferBaseModel {
     name: string;
+    description: string;
     address: string;
     slug: string;
     slaryFrom: string;
     slaryTo: string;
     addressLocation: AddressLocation;
+    status: string;
+    expiredAt: Date;
     createdAt: Date;
     jobType: JobType;
+    jobCategory: JobCategory;
     employer: JobEmployer;
 }
 

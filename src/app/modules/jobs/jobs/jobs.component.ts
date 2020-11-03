@@ -33,7 +33,6 @@ export class JobsComponent implements OnInit {
     this._jobService.filter(parmas).subscribe((res: any) => {
       this.jobs = res.content;
       this.totalElement = res.totalElements;
-      console.log(this.jobs);
     });
   }
 }
