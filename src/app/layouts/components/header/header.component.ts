@@ -1,5 +1,5 @@
 import { AuthenticationService } from '@core/services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginRegisterPopupComponent } from 'app/modules/popup/login-register-popup/login-register-popup.component';
 import { CurrentUser } from '@core/models/currentUser';
@@ -12,11 +12,23 @@ import { CurrentUser } from '@core/models/currentUser';
 export class HeaderComponent implements OnInit {
 
   currentUser: CurrentUser;
+  isDropdown: boolean = false;
+
+  @ViewChild('toggleButton', { static: false }) toggleButton: ElementRef;
+  @ViewChild('cart', { static: false }) cart: ElementRef;
 
   constructor(
     public dialog: MatDialog,
-    private _authenticationService: AuthenticationService
+    private _authenticationService: AuthenticationService,
+    private renderer: Renderer2,
   ) {
+    this.renderer.listen('window', 'click', (e: Event) => {
+      if (this.cart !== undefined) {
+        if (e.target !== this.toggleButton.nativeElement && !this.cart.nativeElement.contains(e.target)) {
+          this.isDropdown = false;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -28,6 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void{
+    this.isDropdown = false;
     this._authenticationService.logout();
   }
 }

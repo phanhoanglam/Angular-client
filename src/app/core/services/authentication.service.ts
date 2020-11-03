@@ -8,11 +8,11 @@ import { CurrentUser } from '@core/models/currentUser';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<CurrentUser> = new BehaviorSubject<CurrentUser>(JSON.parse(localStorage.getItem('currentUser')));
+    private currentUserSubject: any;
     public currentUser: Observable<CurrentUser>;
 
     constructor(private http: HttpClient) {
-        this.currentUser = this.currentUserSubject.asObservable();
+        this.currentUserSubject = new BehaviorSubject<CurrentUser>(JSON.parse(localStorage.getItem('currentUser')));
     }
 
     public get currentUserValue(): CurrentUser {

@@ -41,7 +41,7 @@ export class LoginRegisterPopupComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private _dialogRef: MatDialogRef<LoginRegisterPopupComponent>
   ) {
-    if (this._authenticationService.currentUserValue) {
+    if (this._authenticationService.currentUserObservable) {
       this.router.navigate(['/']);
     }
 
@@ -130,7 +130,6 @@ export class LoginRegisterPopupComponent implements OnInit {
         .subscribe(
           data => {
             this.close(true);
-            // this._authenticationService.currentUser.next();
             this.router.navigate([this.returnUrl]);
           },
           error => {

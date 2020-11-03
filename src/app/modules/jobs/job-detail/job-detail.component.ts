@@ -16,6 +16,7 @@ import { Job, JobEmployer, AddressLocation } from '@core/models/jobs';
 export class JobDetailComponent implements OnInit {
 
   job: Job;
+  zoom: number = 14;
 
   constructor(
     private readonly _jobService: JobService,
@@ -32,16 +33,11 @@ export class JobDetailComponent implements OnInit {
     const paramSlug = this.route.snapshot.params['postSlug'];
     this._jobService.get(paramSlug).subscribe((res: any) => {
       this.job = res;
-      console.log(this.job.employer.avatar);
       console.log(this.job);
     });
   }
 
   showPopupApplyNow(): void {
     const dialogRef = this.dialog.open(ApplyNowPopupComponent, { panelClass: 'custom-dialog-container' },);
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
   }
 }

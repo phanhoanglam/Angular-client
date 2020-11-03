@@ -6,6 +6,7 @@ import { JobDetailComponent } from './job-detail/job-detail.component';
 import { ApplyNowPopupComponent } from './job-detail/apply-now-popup/apply-now-popup.component';
 import { JwPaginationComponent } from 'app/shared/directives/pagination/JwPagination';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   imports: [
     CommonModule,
     JobRoutingModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
+      libraries: ['places'],
+    }),
   ]
 })
 export class JobsModule { }
