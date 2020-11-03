@@ -7721,7 +7721,7 @@ table.basic-table {
 
 /* average rating before stars */
 
-.star-rating:before {
+/* .star-rating:before {
     content: attr(data-rating);
     float: left;
     border-radius: 4px;
@@ -7734,7 +7734,7 @@ table.basic-table {
     position: relative;
     top: 1px;
     margin-right: 10px;
-}
+} */
 
 
 /* No stars */
