@@ -24,7 +24,8 @@
                     <div class="keywords-container">
                         <div class="keyword-input-container">
                             <input type="text" class="keyword-input" placeholder="e.g. job title" />
-                            <button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
+                            <button class="keyword-input-button ripple-effect"><i
+                                    class="icon-material-outline-add"></i></button>
                         </div>
                         <div class="keywords-list">
                             <!-- keywords go here -->
@@ -36,18 +37,19 @@
                 <!-- Category -->
                 <div class="sidebar-widget">
                     <h3>Category</h3>
-                    <select class="selectpicker default" multiple data-selected-text-format="count" data-size="7" title="All Categories">
-						<option>Admin Support</option>
-						<option>Customer Service</option>
-						<option>Data Analytics</option>
-						<option>Design & Creative</option>
-						<option>Legal</option>
-						<option>Software Developing</option>
-						<option>IT & Networking</option>
-						<option>Writing</option>
-						<option>Translation</option>
-						<option>Sales & Marketing</option>
-					</select>
+                    <select class="selectpicker default" multiple data-selected-text-format="count" data-size="7"
+                        title="All Categories">
+                        <option>Admin Support</option>
+                        <option>Customer Service</option>
+                        <option>Data Analytics</option>
+                        <option>Design & Creative</option>
+                        <option>Legal</option>
+                        <option>Software Developing</option>
+                        <option>IT & Networking</option>
+                        <option>Writing</option>
+                        <option>Translation</option>
+                        <option>Sales & Marketing</option>
+                    </select>
                 </div>
 
                 <!-- Job Types -->
@@ -56,22 +58,27 @@
 
                     <div class="switches-list">
                         <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Freelance</label>
+                            <label class="switch"><input type="checkbox"><span class="switch-button"></span>
+                                Freelance</label>
                         </div>
 
                         <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Full Time</label>
+                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Full
+                                Time</label>
                         </div>
 
                         <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Part Time</label>
+                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Part
+                                Time</label>
                         </div>
 
                         <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Internship</label>
+                            <label class="switch"><input type="checkbox"><span class="switch-button"></span>
+                                Internship</label>
                         </div>
                         <div class="switch-container">
-                            <label class="switch"><input type="checkbox"><span class="switch-button"></span> Temporary</label>
+                            <label class="switch"><input type="checkbox"><span class="switch-button"></span>
+                                Temporary</label>
                         </div>
                     </div>
 
@@ -83,7 +90,15 @@
                     <div class="margin-top-55"></div>
 
                     <!-- Range Slider -->
-                    <input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" />
+                    <!-- <input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500" data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" /> -->
+                    <div class=" range">
+                        <ng5-slider value="0" highValue="100" [options]="{
+                            floor: 0,
+                            ceil: 100,
+                            hideLimitLabels: true,
+                            hidePointerLabels: true
+                          }"></ng5-slider>
+                    </div>
                 </div>
 
                 <!-- Tags -->
@@ -128,7 +143,7 @@
 
             <!-- Search Button -->
             <div class="sidebar-search-button-container">
-                <button class="button ripple-effect">Search</button>
+                <button (click)="search()" class="button ripple-effect">Search</button>
             </div>
             <!-- Search Button / End-->
 
@@ -172,7 +187,8 @@
 
                         <!-- Details -->
                         <div class="job-listing-description">
-                            <h4 class="job-listing-company">{{job.employer.name}} <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
+                            <h4 class="job-listing-company">{{job.employer.name}} <span class="verified-badge"
+                                    title="Verified Employer" data-tippy-placement="top"></span></h4>
                             <h3 class="job-listing-title">{{job.name}}</h3>
                         </div>
                     </div>
@@ -181,9 +197,12 @@
                     <div class="job-listing-footer">
                         <span class="bookmark-icon"></span>
                         <ul>
-                            <li [matTooltip]="job.address"><i class="icon-material-outline-location-on"></i> {{job.address.substring(0, job.address.indexOf(','))}}</li>
+                            <li [matTooltip]="job.address"><i class="icon-material-outline-location-on"></i>
+                                {{job.address.substring(0, job.address.indexOf(','))}}</li>
                             <li><i class="icon-material-outline-business-center"></i> {{job.jobType.name}}</li>
-                            <li><i class="icon-material-outline-account-balance-wallet"></i> {{job.slaryFrom == null ? 0 : job.slaryFrom}} - {{job.slaryTo == null ? 0 : job.slaryTo}}</li>
+                            <li><i class="icon-material-outline-account-balance-wallet"></i>
+                                {{job.slaryFrom == null ? 0 : job.slaryFrom}} -
+                                {{job.slaryTo == null ? 0 : job.slaryTo}}</li>
                             <!-- <li><i class="icon-material-outline-access-time"></i> 2 days ago</li> -->
                         </ul>
                     </div>
@@ -192,7 +211,8 @@
 
             <!-- Pagination -->
             <div class="clearfix"></div>
-            <jw-pagination [totalElement]="totalElement" [pageIndex]="pageIndex" (changePage)="loadData($event)"></jw-pagination>
+            <jw-pagination [totalElement]="totalElement" [pageIndex]="pageIndex" (changePage)="loadData($event)">
+            </jw-pagination>
             <div class="clearfix"></div>
             <!-- Pagination / End -->
 

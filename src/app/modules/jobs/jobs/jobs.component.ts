@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobRoutes } from '@config/routes';
 import { Job } from '@core/models/jobs';
 import { JobService } from '@core/services/job.service';
+import { Options } from 'ng5-slider/options';
 
 @Component({
   selector: 'app-job',
@@ -17,12 +18,24 @@ export class JobsComponent implements OnInit {
   totalElement: number;
   pageIndex = 1;
 
+  salary: string;
+
   constructor(
     private _jobService: JobService
   ) { }
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  value: number = 100;
+  options: Options = {
+    floor: 0,
+    ceil: 200
+  };
+  
+  search(){
+    console.log('salary >>> ', this.salary);
   }
 
   loadData(pageEvent?: number): void{

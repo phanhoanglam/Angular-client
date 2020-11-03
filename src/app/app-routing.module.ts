@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-import {JobRoutes} from '@config/routes';
+import { JobRoutes } from '@config/routes';
 
 const routes: Routes = [
   {
@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: JobRoutes.dashboardPath,
     loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: JobRoutes.forgotPassword,
+    loadChildren: () => import('./modules/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
   },
   {
     path: '**',

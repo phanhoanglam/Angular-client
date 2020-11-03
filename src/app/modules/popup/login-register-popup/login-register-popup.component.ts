@@ -41,9 +41,9 @@ export class LoginRegisterPopupComponent implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private _dialogRef: MatDialogRef<LoginRegisterPopupComponent>
   ) {
-    if (this._authenticationService.currentUserObservable) {
-      this.router.navigate(['/']);
-    }
+    // if (this._authenticationService.currentUserObservable) {
+    //   this.router.navigate(['/']);
+    // }
 
     this.setCurrentLocation();
   }

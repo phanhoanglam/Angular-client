@@ -7,6 +7,8 @@ import { ApplyNowPopupComponent } from './job-detail/apply-now-popup/apply-now-p
 import { JwPaginationComponent } from 'app/shared/directives/pagination/JwPagination';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AgmCoreModule } from '@agm/core';
+import { FormsModule } from '@angular/forms';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { AgmCoreModule } from '@agm/core';
     CommonModule,
     JobRoutingModule,
     MatTooltipModule,
+    FormsModule,
+    Ng5SliderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
       libraries: ['places'],
