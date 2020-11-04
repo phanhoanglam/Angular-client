@@ -1,3 +1,4 @@
+import { JobProposalService } from './../../../../core/services/jobProposal';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -11,6 +12,7 @@ export class ApplyNowPopupComponent implements OnInit {
   fileToUpload: File = null;
 
   constructor(
+    private _jobProposalService: JobProposalService,
     private _dialogRef: MatDialogRef<ApplyNowPopupComponent>
   ) { }
 
@@ -19,7 +21,12 @@ export class ApplyNowPopupComponent implements OnInit {
 
   handleFileInput(files: FileList): void {
     this.fileToUpload = files.item(0);
-    console.log('file >>>> ', this.fileToUpload);
+  }
+
+  onSubmit(): void{
+    this._jobProposalService.saveFile(this.fileToUpload).subscribe(res=>{
+      console.log('url file >>> ', res);
+    });
   }
 
   close(result: any): void {
