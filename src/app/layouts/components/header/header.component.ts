@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   currentUser: CurrentUser;
   isDropdown: boolean = false;
+  isSiderBar: boolean = false;
 
   @ViewChild('toggleButton', { static: false }) toggleButton: ElementRef;
   @ViewChild('cart', { static: false }) cart: ElementRef;

@@ -1,3 +1,4 @@
+import { JobProposalService } from './../../../core/services/jobProposal';
 import { JobCategory } from './../../../core/models/job-category';
 import { JobType } from './../../../core/models/job-type';
 import { Location } from './../../../shared/interfaces/location.interface';
@@ -16,10 +17,12 @@ import { Job, JobEmployer, AddressLocation } from '@core/models/jobs';
 export class JobDetailComponent implements OnInit {
 
   job: Job;
-  zoom: number = 14;
+  zoom = 14;
+  isApply = false;
 
   constructor(
     private readonly _jobService: JobService,
+    private readonly _jobProposal: JobProposalService,
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) { }
@@ -33,11 +36,22 @@ export class JobDetailComponent implements OnInit {
     const paramSlug = this.route.snapshot.params['postSlug'];
     this._jobService.get(paramSlug).subscribe((res: any) => {
       this.job = res;
-      console.log(this.job);
+      this._jobProposal.searchProposal(this.job.id).subscribe((response: any)=> {
+        console.log(response.data);
+        
+        if(response.data == null){
+          this.isApply = true;
+        }else{
+          this.isApply = false;
+        }
+      });
     });
   }
 
   showPopupApplyNow(): void {
-    const dialogRef = this.dialog.open(ApplyNowPopupComponent, { panelClass: 'custom-dialog-container' },);
+    const dialogRef = this.dialog.open(ApplyNowPopupComponent, {
+      panelClass: 'custom-dialog-container',
+      data: this.job?.id
+    });
   }
 }

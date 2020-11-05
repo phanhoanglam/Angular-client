@@ -129,8 +129,8 @@
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
 
-				<a (click)="showPopupApplyNow()" class="apply-now-button popup-with-zoom-anim apply-now-popup">Apply Now <i class="icon-material-outline-arrow-right-alt"></i></a>
-					
+				<a (click)="showPopupApplyNow()" *ngIf="isApply" class="apply-now-button popup-with-zoom-anim apply-now-popup">Apply Now <i class="icon-material-outline-arrow-right-alt"></i></a>
+				<a *ngIf="!isApply" class="applied">Applied</a>
 				<!-- Sidebar Widget -->
 				<div class="sidebar-widget">
 					<div class="job-overview">

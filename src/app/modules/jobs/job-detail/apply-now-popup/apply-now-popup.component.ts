@@ -1,6 +1,7 @@
+import { Attachments, CvJobProposal, JobProposal } from './../../../../core/models/job-proposal';
 import { JobProposalService } from './../../../../core/services/jobProposal';
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-apply-now-popup',
@@ -10,10 +11,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ApplyNowPopupComponent implements OnInit {
 
   fileToUpload: File = null;
+  message: string;
 
   constructor(
     private _jobProposalService: JobProposalService,
-    private _dialogRef: MatDialogRef<ApplyNowPopupComponent>
+    private _dialogRef: MatDialogRef<ApplyNowPopupComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) private _id: any,
   ) { }
 
   ngOnInit(): void {
@@ -24,8 +27,18 @@ export class ApplyNowPopupComponent implements OnInit {
   }
 
   onSubmit(): void{
-    this._jobProposalService.saveFile(this.fileToUpload).subscribe(res=>{
-      console.log('url file >>> ', res);
+    this._jobProposalService.saveFile(this.fileToUpload).subscribe((res: any)=>{
+      const jobProposal = new JobProposal();
+      jobProposal.jobId = this._id;
+      console.log(res.data.name);
+      jobProposal.attachments = new Attachments();
+      jobProposal.attachments.cv = new CvJobProposal();
+      jobProposal.attachments.cv.name = res.data.name;
+      jobProposal.attachments.cv.url = res.data.url;
+      jobProposal.message = this.message;
+      this._jobProposalService.saveJob(jobProposal).subscribe((jobRes: any) => {
+        console.log(jobRes);
+      });
     });
   }
 

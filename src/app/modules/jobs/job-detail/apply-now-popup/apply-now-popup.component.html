@@ -23,7 +23,7 @@
 				<!-- Form -->
 				<form method="post" id="apply-now-form">
 
-					<div class="input-with-icon-left">
+					<!-- <div class="input-with-icon-left">
 						<i class="icon-material-outline-account-circle"></i>
 						<input type="text" class="input-text with-border" name="name" id="name" placeholder="First and Last Name" required/>
 					</div>
@@ -31,7 +31,11 @@
 					<div class="input-with-icon-left">
 						<i class="icon-material-baseline-mail-outline"></i>
 						<input type="text" class="input-text with-border" name="emailaddress" id="emailaddress" placeholder="Email Address" required/>
-					</div>
+					</div> -->
+
+					<div class="input-with-icon-left">
+						<textarea [(ngModel)]="message" class="input-text with-border" name="emailaddress" id="emailaddress" placeholder="Message"></textarea>
+					</div> 
 
 					<div class="uploadButton">
 						<input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload-cv" (change)="handleFileInput($event.target.files)" />

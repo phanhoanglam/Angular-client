@@ -11,7 +11,7 @@
                     <h3>Location</h3>
                     <div class="input-with-icon">
                         <div id="autocomplete-container">
-                            <input id="autocomplete-input" type="text" placeholder="Location">
+                            <input name="location" [(ngModel)]="address" type="text" placeholder="Location" appGoogleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)" (onLocationSelected)="onLocationSelected($event)">
                         </div>
                         <i class="icon-material-outline-location-on"></i>
                     </div>
@@ -144,7 +144,7 @@
     <!-- Full Page Sidebar / End -->
 
     <!-- Full Page Content -->
-    <div class="full-page-content-container" data-simplebar>
+    <div class="full-page-content-container" style="height: 768px;" data-simplebar>
         <div class="full-page-content-inner">
 
             <h3 class="page-title">Search Results</h3>

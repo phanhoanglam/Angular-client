@@ -1,8 +1,9 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { JobRoutes } from '@config/routes';
 import { Job } from '@core/models/jobs';
 import { JobService } from '@core/services/job.service';
+import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'app-job',
@@ -18,6 +19,9 @@ export class JobsComponent implements OnInit {
   pageIndex = 1;
 
   salary: string;
+  latitude: number;
+  longitude: number;
+  address: string;
 
   constructor(
     private _jobService: JobService
@@ -27,8 +31,8 @@ export class JobsComponent implements OnInit {
     this.loadData();
   }
 
-  loadData(pageEvent?: number): void{
-    if(pageEvent === undefined){
+  loadData(pageEvent?: number): void {
+    if (pageEvent === undefined) {
       pageEvent = this.pageIndex;
     }
     const parmas = { page: pageEvent, size: 12 };
@@ -36,5 +40,14 @@ export class JobsComponent implements OnInit {
       this.jobs = res.content;
       this.totalElement = res.totalElements;
     });
+  }
+
+  onAutocompleteSelected(result: PlaceResult): void {
+    this.address = result.formatted_address;
+  }
+
+  onLocationSelected(event): void {
+    this.latitude = event.latitude;
+    this.longitude = event.longitude;
   }
 }
