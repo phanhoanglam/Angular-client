@@ -149,11 +149,7 @@ export class LoginRegisterPopupComponent implements OnInit {
   }
 
   onRegister(): void {
-    console.log(this.address);
-    console.log(this.latitude, ',', this.longitude);
-    if (this.registerForm.invalid) {
-      return;
-    }
+    console.log(this.r);
 
     this.loading = true;
     

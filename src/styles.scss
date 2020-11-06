@@ -44,4 +44,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   // height: 640px;
 }
 
-
+button.disabled {
+  background-color: rgba(0,0,0,.12);
+  box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+  color: rgba(0,0,0,.26);
+}
