@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardRouters, JobRoutes } from '@config/routes';
 
 @Component({
   selector: 'app-dashboard-settings',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPostJobsComponent implements OnInit {
 
+  dashboardRoutes = DashboardRouters;
+  jobRoutes = JobRoutes;
+  
   constructor() { }
 
   ngOnInit(): void {
