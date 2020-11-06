@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardHomeComponent } from './components/dahsboard-home/dashboard-home.component';
 import { DashboardRouters } from '@config/routes';
+import {DashboardPostJobsComponent} from './components/dashboard-post-jobs/dashboard-post-jobs.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: DashboardRouters.message, component: DashboardMessagesComponent },
-      { path: DashboardRouters.setting, component: DashboardSettingsComponent }
+      { path: DashboardRouters.setting, component: DashboardSettingsComponent },
+      { path: DashboardRouters.postJob, component: DashboardPostJobsComponent }
     ]
   }
 ];

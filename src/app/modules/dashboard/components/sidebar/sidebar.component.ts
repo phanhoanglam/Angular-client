@@ -1,5 +1,6 @@
 import { AuthenticationService } from '@core/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import {DashboardRouters} from '@config/routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  dashboardRoutes = DashboardRouters;
   isShowJob = false;
   isShowTask = false;
   isShowDashboardNav = false;
