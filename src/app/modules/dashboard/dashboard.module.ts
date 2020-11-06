@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardHomeComponent } from './components/dahsboard-home/dashboard-home.component';
 import { DashboardMessagesComponent } from './components/dashboard-messages/dashboard-messages.component';
 import { DashboardSettingsComponent } from './components/dashboard-settings/dashboard-settings.component';
+import {DashboardPostJobsComponent} from './components/dashboard-post-jobs/dashboard-post-jobs.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DashboardSettingsComponent } from './components/dashboard-settings/dash
     DashboardComponent,
     DashboardHomeComponent,
     DashboardMessagesComponent,
-    DashboardSettingsComponent
+    DashboardSettingsComponent,
+    DashboardPostJobsComponent
   ],
   imports: [
     CommonModule,

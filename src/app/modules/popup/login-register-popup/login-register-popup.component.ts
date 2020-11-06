@@ -150,10 +150,6 @@ export class LoginRegisterPopupComponent implements OnInit {
   }
 
   onRegister(): void {
-    // if (this.registerForm.invalid) {
-    //   return;
-    // }
-debugger;
     this.loading = true;
 
     const addressLocation = new AddressLocation();
