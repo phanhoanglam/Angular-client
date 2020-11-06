@@ -15,7 +15,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { JwPaginationComponent } from './shared/directives/pagination/JwPagination';
 
 @NgModule({
   declarations: [
