@@ -10,6 +10,9 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms';
 import { JwPaginationComponent } from 'app/shared/component/pagination/JwPagination';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatTooltipModule,
     FormsModule,
     MatIconModule,
+    MatSelectModule,
+    MatInputModule,
+    NgMultiSelectDropDownModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC1T5A0ce0dJVYavhzTWH4w-yJ243KuTTI',
+      // apiKey: 'AIzaSyBYiHfMlwJdYaxFTkZQAk57bZaLPPW35TY',
       libraries: ['places'],
     }),
   ]
