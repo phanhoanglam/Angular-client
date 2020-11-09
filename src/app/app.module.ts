@@ -19,8 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginRegisterPopupComponent,
-    GoogleMapsAutocompleteDirective
+    LoginRegisterPopupComponent
   ],
   imports: [
     AppRoutingModule,
@@ -29,16 +28,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    BrowserModule,
-    MatDialogModule,
     MatFormFieldModule,
-    AgmCoreModule.forRoot({
-      // apiKey: 'AIzaSyBYiHfMlwJdYaxFTkZQAk57bZaLPPW35TY',
-      libraries: ['places'],
-    }),
+    SharedModule
   ],
   exports: [
-    SharedModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatInputModule} from '@angular/material/input';
+import { SharedModule } from 'app/shared/share-module/shared-module.module';
 
 @NgModule({
   declarations: [
@@ -20,21 +21,16 @@ import {MatInputModule} from '@angular/material/input';
     JobDetailComponent,
     ApplyNowPopupComponent,
     JwPaginationComponent,
-    RatingComponent
+    RatingComponent,
   ],
   imports: [
-    CommonModule,
     JobRoutingModule,
     MatTooltipModule,
     FormsModule,
-    MatIconModule,
     MatSelectModule,
     MatInputModule,
     NgMultiSelectDropDownModule.forRoot(),
-    AgmCoreModule.forRoot({
-      // apiKey: 'AIzaSyBYiHfMlwJdYaxFTkZQAk57bZaLPPW35TY',
-      libraries: ['places'],
-    }),
+    SharedModule
   ]
 })
 export class JobsModule { }

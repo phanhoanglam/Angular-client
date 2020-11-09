@@ -37,8 +37,6 @@ export class JobDetailComponent implements OnInit {
     this._jobService.get(paramSlug).subscribe((res: any) => {
       this.job = res;
       this._jobProposal.searchProposal(this.job.id).subscribe((response: any)=> {
-        console.log(response.data);
-        
         if(response.data == null){
           this.isApply = true;
         }else{

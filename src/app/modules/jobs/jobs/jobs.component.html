@@ -12,8 +12,7 @@
                     <div class="input-with-icon">
                         <div id="autocomplete-container">
                             <input name="location" [(ngModel)]="address" type="text" placeholder="Location"
-                                appGoogleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)"
-                                (onLocationSelected)="onLocationSelected($event)">
+                                appGoogleMapsAutocomplete (onAutocompleteSelected)="onAutocompleteSelected($event)">
                         </div>
                         <i class="icon-material-outline-location-on"></i>
                     </div>
@@ -25,7 +24,7 @@
                     <h3>Keywords</h3>
                     <div class="keywords-container">
                         <div class="keyword-input-container">
-                            <input type="text" class="keyword-input" placeholder="e.g. job title" />
+                            <input [(ngModel)]="keyword" type="text" class="keyword-input" placeholder="e.g. job title" />
                             <!-- <button class="keyword-input-button ripple-effect"><i
                                     class="icon-material-outline-add"></i></button> -->
                         </div>
@@ -40,9 +39,19 @@
                 <div class="sidebar-widget">
                     <h3>Category</h3>
 
-                    <ng-multiselect-dropdown [(ngModel)]="selectCategory" placeholder="All Categories"
-                        [data]="categories" [settings]="dropdownSettings">
+                    <ng-multiselect-dropdown (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+                        [(ngModel)]="selectCategory" placeholder="All Categories" [data]="categories"
+                        [settings]="dropdownSettings">
                     </ng-multiselect-dropdown>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+
+                    <ng-multiselect-dropdown [(ngModel)]="selectTag" placeholder="All Tags" [data]="jobTags"
+                        [settings]="dropdownSettings">
+                    </ng-multiselect-dropdown>
+
                 </div>
 
                 <!-- Job Types -->
@@ -56,23 +65,17 @@
                 </div>
 
                 <!-- Salary -->
-                <div class="sidebar-widget">
+                <div class="sidebar-widget salary">
                     <h3>Salary</h3>
                     <!-- Range Slider -->
-                    <mat-form-field class="example-form-field" style="width: 48%;">
-                        <mat-label>Salary From</mat-label>
-                        <input matInput type="text" [(ngModel)]="salaryFrom" style="all: unset;">
-                        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="salaryFrom=''">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field" style="width: 48%; float: right;">
-                        <mat-label>Salary To</mat-label>
-                        <input matInput type="text" [(ngModel)]="salaryTo" style="all: unset;">
-                        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="salaryTo=''">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                    </mat-form-field>
+                    <div class="input-with-icon salary1">
+                        <input [(ngModel)]="salaryFrom" class="with-border" type="text" placeholder="Min">
+                        <i class="currency">USD</i>
+                    </div>
+                    <div class="input-with-icon salary2">
+                        <input [(ngModel)]="salaryTo" class="with-border" type="text" placeholder="Max">
+                        <i class="currency">USD</i>
+                    </div>
                     <!-- <input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500"
                         data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" /> -->
                 </div>

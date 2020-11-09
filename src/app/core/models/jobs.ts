@@ -30,3 +30,15 @@ export interface JobEmployer {
     nationality: string;
     rating: string;
 }
+
+export class FilterJob{
+    page: number;
+    size: number;
+    salaryFrom: number;
+    salaryTo: number;
+    names: string;
+    location: string;
+    categories: any[];
+    skills: any[];
+    types: any[];
+}

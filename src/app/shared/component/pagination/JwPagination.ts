@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 
 // import paginate = require('jw-paginate');
 import paginate from 'jw-paginate';
@@ -23,20 +23,28 @@ import paginate from 'jw-paginate';
                     </div>`
 })
 
-export class JwPaginationComponent implements OnInit {
-    @Input() totalElement = 0;
+export class JwPaginationComponent implements OnInit, OnChanges {
+    @Input() totalElement: number;
     @Output() changePage = new EventEmitter<any>(true);
     @Input() pageIndex: number;
     @Input() pageSize = 12;
     @Input() maxPages = 4;
+    @Input() initialPage = 1;
 
     pager: any = {};
 
     ngOnInit(): void {
         // set page if items array isn't empty
-        // if (this.totalRecord === undefined) {
-        this.setPage(this.pageIndex);
-        // }
+        if (this.totalElement !== 0 && this.totalElement !== undefined) {
+            this.setPage(this.pageIndex);
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        // reset page if items array has changed
+        if (changes.totalElement.currentValue !== changes.totalElement.previousValue) {
+            this.setPage(this.pageIndex);
+        }
     }
 
     public setPage(page: number): void {
