@@ -6,7 +6,7 @@ import paginate from 'jw-paginate';
 @Component({
     // moduleId: module.id,
     selector: 'jw-pagination',
-    template: `<div class="pagination-container margin-top-20 margin-bottom-20" *ngIf="totalElement !== undefined || totalElement > 0">
+    template: `<div class="pagination-container margin-top-20 margin-bottom-20" *ngIf="totalElement !== undefined && totalElement > 0">
                         <nav class="pagination">
                             <ul>
                                 <li [ngClass]="{disabled:pager.currentPage === 1}" class="pagination-arrow poiter">
